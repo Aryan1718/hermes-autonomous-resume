@@ -2,6 +2,8 @@
 
 Reusable skill-based resume pipeline for tailoring resumes against job descriptions.
 
+For full setup and architecture docs, see the Docusaurus site in [`docs-site/`](D:/Desktop/projects/hermes-autonomous-resume/docs-site).
+
 ## Start Here
 
 Before running anything else:

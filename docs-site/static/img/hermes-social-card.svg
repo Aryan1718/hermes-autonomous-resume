@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#134e4a"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1030" cy="120" r="160" fill="#f59e0b" fill-opacity="0.18"/>
+  <circle cx="140" cy="520" r="220" fill="#5eead4" fill-opacity="0.14"/>
+  <text x="90" y="205" fill="#f8fafc" font-size="42" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-weight="700">
+    Hermes
+  </text>
+  <text x="90" y="310" fill="#f8fafc" font-size="86" font-family="Space Grotesk, Segoe UI, sans-serif" font-weight="700">
+    Autonomous Resume Pipeline
+  </text>
+  <text x="90" y="392" fill="#cbd5e1" font-size="34" font-family="IBM Plex Sans, Segoe UI, sans-serif">
+    Setup, architecture, pipeline flow, dashboard integration, and candidate onboarding.
+  </text>
+</svg>
