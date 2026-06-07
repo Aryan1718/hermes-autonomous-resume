@@ -6,7 +6,7 @@ const config: Config = {
   tagline: 'Autonomous resume pipeline docs for setup, operation, and extension.',
   favicon: 'img/hermes-mark.svg',
 
-  url: 'https://example.com',
+  url: 'https://hermes-autonomous-resume.vercel.app',
   baseUrl: '/',
 
   organizationName: 'hermes',

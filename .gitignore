@@ -35,3 +35,8 @@ Desktop.ini
 # Temporary files
 tmp/
 temp/
+
+# Playwright artifacts
+.playwright-mcp/
+playwright-report/
+test-results/
