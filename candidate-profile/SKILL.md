@@ -18,6 +18,8 @@ metadata:
 
 > **Important:** Do not leave another person's details here. When this repository is reused, replace every candidate-specific fact in this file with the current user's own information.
 
+> **Setup note:** For first-time setup or broad refresh, use the `profile-bootstrap` skill to collect the required inputs and rewrite this file consistently.
+
 ---
 
 ## How to Use This File

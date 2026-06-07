@@ -1,45 +1,48 @@
-# Agent Behavior Rules — JD Pre-Filter
+# Agent Behavior Rules - JD Pre-Filter
 
 Detailed behavioral rules for each phase of the pre-filter step.
 
 ## General Rules
 
-- **Load the profile once per batch.** Do not re-read it per JD — it is the same for all JDs in the batch.
+- **Load the profile once per batch.** Do not re-read it per JD. It is the same for all JDs in that batch.
 - **Phase 1 before Phase 2 before Phase 3.** Never score a JD that failed a disqualifier or a binary check. The order is a filter funnel, not a checklist.
-- **Disqualification reasons must be specific.** "Failed sponsorship check — JD says 'must be authorized to work in the US permanently, no sponsorship'" not "failed sponsorship check."
-- **Scoring traces to the profile.** Every score has evidence. "Career Direction Fit: 30 — JD mentions LangGraph and multi-agent orchestration, matches Fit 1 directly" not just "30."
-- **Never adjust the profile during pre-filtering.** If a JD reveals that the profile has a gap or wrong assumption, note it in the output — do not silently update the profile mid-run. Profile updates happen explicitly, with a change log entry.
-- **Do not run the full pipeline on a disqualified or failed-binary JD.** Even if it looks interesting. The filters exist for a reason.
+- **Disqualification reasons must be specific.** Cite the exact JD language and the exact profile rule that fired.
+- **Scoring traces to the profile.** Every score needs evidence from both the JD and the relevant `candidate-profile` section.
+- **Never adjust the profile during pre-filtering.** If a JD reveals that the profile has a gap or wrong assumption, note it in the output. Do not silently update the profile mid-run.
+- **Do not run the full pipeline on a disqualified or failed-binary JD.** Even if it looks interesting.
+- **Do not operate on placeholder profiles.** If `candidate-profile` still contains setup placeholders or obvious template text, stop and ask the user to complete setup first.
 
 ## Phase 1 Rules
 
-- Read the Hard Disqualifiers section of candidate-profile. Check each JD against every disqualifier.
-- If any single disqualifier fires, the JD is immediately dropped. Do not score it. Do not continue to Phase 2. Log it with the reason.
-- For location: look for explicit non-US location with no remote clause. "London, UK" with no mention of US remote = disqualify. "Remote" or "Remote (US)" or no location = pass.
-- For sponsorship: look for exact phrases like "no sponsorship", "must be authorized to work permanently", "US citizen or permanent resident required", "no OPT/CPT". Ambiguous = pass. Explicit denial = disqualify.
-- For experience: look for "5+ years", "7+ years", "8+ years" in the requirements section. "3–5 years" = pass. "Minimum 5 years" = disqualify. "Preferred 5 years" = pass (preferred is not required).
+- Read the `Hard Disqualifiers` section of `candidate-profile`. Check each JD against every disqualifier.
+- If any single disqualifier fires, the JD is immediately dropped. Do not score it. Do not continue to Phase 2. Log the exact reason.
+- For location: compare the JD's location against the candidate's actual `Location` scope. Explicitly out of scope with no acceptable remote option = disqualify. Silent or ambiguous = pass unless the profile says otherwise.
+- For work authorization: compare the JD's explicit authorization restrictions against the candidate's `Work Authorization` section. Ambiguous = pass. Explicit incompatibility = disqualify.
+- For experience: compare the JD's explicit minimums against the candidate's `Seniority` section. Preferred experience does not disqualify. Required experience that materially exceeds the candidate's supportable range does.
+- For role family: compare title plus scope against `Target Roles` and `Role types that do NOT match`. Use the actual responsibilities, not just the title string.
+- For candidate-specific constraints: apply any additional profile constraints exactly as written. Do not invent new ones.
 
 ## Phase 2 Rules
 
-- All three questions must be YES to pass. A single NO disqualifies the JD — log it with which question failed.
-- Q1 (role type): Check the Target Roles section of candidate-profile. When ambiguous, if the title is unusual but the description clearly describes building software systems, features, or APIs → YES. Give the benefit of the doubt on title, not on description.
-- Q2 (seniority): "3–5 years preferred" → YES. "3–5 years required, minimum 3" → YES. "Minimum 5 years" → NO.
-- Q3 (provable must-haves): Count only "Always provable" tier items. "Provable with framing" items do not count toward the threshold of two.
+- All three questions must be YES to pass. A single NO disqualifies the JD. Log which question failed.
+- Q1 (role type): Check the `Target Roles` section of `candidate-profile`. When ambiguous, if the title is unusual but the description clearly matches the candidate's target work, answer YES.
+- Q2 (seniority): Use the `Seniority` section of `candidate-profile`. Unspecified seniority = YES. Reasonable stretch roles = YES if the profile allows them. Materially more senior than the profile supports = NO.
+- Q3 (provable must-haves): Count only `Always Provable` items. `Provable with Framing` items do not count toward the threshold of two.
 
 ## Phase 3 Rules
 
-- Count every JD must-have or required skill that appears in the "Always provable" tier of candidate-profile.
-- For Career Direction Fit: check the Career Direction section of candidate-profile. Three fit types exist in priority order. Score based on which fit type the JD matches. Use the highest-scoring one when multiple match.
-- For Strongest Signal Match: check the Strongest Signals section of candidate-profile. Five signals exist. A signal "matches" when the JD's description or requirements directly name the concept — not just shares a domain. "LLM experience" matches signal 1. "Python experience" alone does not.
-- For Preferred Signal Count: check the Preferred Signals section of candidate-profile. Count how many appear in the JD. Each one is worth 1 point, capped at 10.
+- Count every JD must-have or required skill that appears in the `Always Provable` tier of `candidate-profile`.
+- For Career Direction Fit: check the ordered `Career Direction` section of `candidate-profile`. Reward earlier fits more heavily. Use the highest matching fit when multiple apply.
+- For Strongest Signal Match: check the `Strongest Signals` section of `candidate-profile`. A signal matches when the JD directly names the concept or clearly requires the same kind of work, not when it merely overlaps by domain.
+- For Preferred Signal Count: check the `Preferred Signals` section of `candidate-profile`. Count how many appear in the JD. Each one is worth 1 point, capped at 10.
 
 ## Phase 4 Rules
 
-- Sort all scored JDs by total score, highest first. Select the top 3–5 for the full pipeline.
-- If the top score is ≥ 75: take top 5. If 60–74: take top 4. If < 60: take top 3 only.
+- Sort all scored JDs by total score, highest first. Select the top 3-5 for the full pipeline.
+- If the top score is >= 75: take top 5. If 60-74: take top 4. If < 60: take top 3 only.
 - If fewer than 3 JDs scored above 40: flag the batch as low-quality and take only those above 40.
-- Tie-breaking: Higher Career Direction Fit → Higher Strongest Signal Match → Higher Provable Coverage → More Preferred Signals.
-- Never call PATCH /use for a skipped JD. It stays unprocessed so it can be re-evaluated after a candidate profile update.
+- Tie-breaking: Higher Career Direction Fit -> Higher Strongest Signal Match -> Higher Provable Coverage -> More Preferred Signals.
+- Never call the downstream pipeline for a skipped JD. It stays unprocessed so it can be re-evaluated after a profile update.
 
 ## Log Format
 
@@ -48,4 +51,4 @@ Detailed behavioral rules for each phase of the pre-filter step.
 { "job_description_id": "{jd_id}", "status": "skipped", "message": "{company_name}: pre-filter {result}. Reason: {reason}. Score: {score}." }
 ```
 
-**Profile notes:** If any JD revealed a gap or wrong assumption in candidate-profile, record it as a note for the candidate to review and update manually. The agent never edits the profile autonomously.
+**Profile notes:** If any JD revealed a gap or wrong assumption in `candidate-profile`, record it as a note for the candidate to review and update manually. The agent never edits the profile autonomously.
