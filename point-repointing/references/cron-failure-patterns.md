@@ -7,7 +7,7 @@ The #1 root cause of quality loss: cron subagents do NOT inherit memory or sessi
 ## Failure Pattern 1: Short, Generic Bullets
 
 Cron: "Built 4 production AI blueprints with distributed architecture" (generic)
-Should be: "Independently built 4 of 15 production AI blueprints from scratch including AccessIQ (MCP-based RBAC/ABAC authorization) and OmniRoute (multi-agent planner with intent classification)"
+Should be: "Independently built 4 of 15 production AI blueprints from scratch including <SYSTEM_NAME_1> (MCP-based RBAC/ABAC authorization) and <SYSTEM_NAME_2> (multi-agent planner with intent classification)"
 
 **Cause:** cron agent didn't read raw.md. Generated from JD text alone.
 
@@ -53,7 +53,7 @@ Six checks: (1) 230-320 chars, (2) >=2 bold terms, (3) no --, (4) problem->actio
 **Discovered:** June 5, 2026. When rewriting the same bullet for different JDs, the agent drops qualifier words ("production", "large-scale", "across platforms") to shorten it, accidentally undershooting 230 chars.
 
 **Example of the failure:**
-- Alps backend: "Developed FastAPI endpoints and Python backend services for order-processing workflows handling large data volumes" (OK, 194 chars without metrics)
+- <WORK_EXPERIENCE_COMPANY_2> backend: "Developed FastAPI endpoints and Python backend services for order-processing workflows handling large data volumes" (OK, 194 chars without metrics)
 - Tailored shorter: "Developed FastAPI endpoints and Python services for order-processing workflows" (FAIL, 120 chars)
 
 **Fix:** After writing every bullet, strip formatting and count raw chars immediately. If under 230, the FIRST fix is to add back dropped specifics (scale, technologies, domain context) — NOT to pad with filler.
@@ -87,3 +87,4 @@ Use this ~285-char bullet as the quality reference for every bullet you write:
 "Deployed a Redis caching layer on AWS with cache refresh controls for a production SaaS platform serving thousands of users, reducing database load by 75% on time-sensitive operational workflows and improving response consistency during traffic spikes."
 
 Every bullet should have: named technologies, specific action, scale, and measurable outcome.
+

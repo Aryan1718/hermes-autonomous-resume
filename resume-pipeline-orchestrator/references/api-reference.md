@@ -88,13 +88,13 @@ Called after every notable event: each JD outcome (success, failed, skipped), an
 ### Message Templates
 
 **Per JD — success:**
-`"<TARGET_COMPANY> (backend-engineer): resume assembled, pushed, and JD marked processed. Pre-filter score: 82. Projects: enterprise-rag, <work-company-slug>, discovermap."`
+`"<TARGET_COMPANY> (backend-engineer): resume assembled, pushed, and JD marked processed. Pre-filter score: 82. Projects: <project-slug-1>, <work-company-slug>, <project-slug-2>."`
 
 **Per JD — success with PATCH warning:**
 `"<TARGET_COMPANY> (backend-engineer): resume built and pushed but PATCH /use failed. JD still shows unprocessed — review manually."`
 
 **Per JD — pipeline failure:**
-`"<TARGET_COMPANY> (backend-engineer): pipeline broke at point-repointing. Error: idx.md not found for enterprise-rag. JD left unprocessed."`
+`"<TARGET_COMPANY> (backend-engineer): pipeline broke at point-repointing. Error: idx.md not found for <project-slug-1>. JD left unprocessed."`
 
 **Per JD — pre-filter skip:**
 `"Globex (platform-engineer): pre-filter score 28. Reason: no A-priority provable must-haves matched."`
@@ -232,6 +232,7 @@ except urllib.error.HTTPError as e:
     print(f"FAILED: HTTP {e.code} — {e.read().decode('utf-8')}")
 PYEOF
 ```
+
 
 
 

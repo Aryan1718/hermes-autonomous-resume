@@ -71,9 +71,9 @@ Use the stacked multi-role format when a candidate held **multiple sequential ro
 
 {\small
 \begin{itemize}[noitemsep, nolistsep, leftmargin=*, itemsep=1mm]
-\item Built multi-agent workflow orchestration for a healthcare AI product, enforcing role and attribute-based access control for cross-agent information sharing.
-\item Rebuilt the SOAP notes generation agent, restructuring clinical information processing and structured output formatting.
-\item Rebuilt the billing codes agent that maps clinical documentation to appropriate medical codes.
+\item Built multi-agent workflow orchestration for a <TARGET_DOMAIN> product, enforcing role and attribute-based access control for cross-agent information sharing.
+\item Rebuilt the <DOMAIN_TASK_1> generation agent, restructuring clinical information processing and structured output formatting.
+\item Rebuilt the <DOMAIN_TASK_2> agent that maps clinical documentation to appropriate medical codes.
 \item Resolved frontend bugs and improved reliability of the user-facing workflow interface.
 \end{itemize}
 }
@@ -86,7 +86,7 @@ Use the stacked multi-role format when a candidate held **multiple sequential ro
 \begin{itemize}[noitemsep, nolistsep, leftmargin=*, itemsep=1mm]
 \item Managed the open-source Innovation Hub repository (15-blueprint AI platform), independently built 4 blueprints from scratch and maintained updates across the full set.
 \item Built FinSights (finance document summarization) and Audify (document-to-podcast with configurable voices) from scratch using Python, FastAPI, and React.
-\item Built AccessIQ (RBAC/ABAC authorization MCP service) and OmniRoute (multi-agent transport system) using CrewAI, LangGraph, and MCP.
+\item Built <SYSTEM_NAME_1> (RBAC/ABAC authorization MCP service) and <SYSTEM_NAME_2> (multi-agent transport system) using CrewAI, LangGraph, and MCP.
 \item Implemented multi-agent orchestration in LangGraph with planner, summarization, and analytical agents across department-scoped access rules.
 \end{itemize}
 }
@@ -112,4 +112,5 @@ The `Everything That Was Done` section has sub-sections for each role phase. The
 4. **Reverse chronological order** — most recent role first
 5. **Never use** `\textbf{Title $\mid$ Company}` for each role separately — that's the single-role format
 6. **No `\vspace{1mm}`** between role title and itemize — it follows directly
+
 

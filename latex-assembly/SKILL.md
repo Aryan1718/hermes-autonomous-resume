@@ -86,7 +86,7 @@ City, ST $\mid$ +1-XXX-XXX-XXXX $\mid$
 
 **Rules:**
 - Name is ALL CAPS wrapped in `\large \textbf{}`
-- City and state on the same line as name (e.g., `Fullerton, CA`)
+- City and state on the same line as name (e.g., `<CITY>, <STATE>`)
 - No Portfolio link — only LinkedIn + GitHub
 - Email uses `mailto:` href — no `\textcolor{blue}`
 - LinkedIn and GitHub use `\textcolor{blue}{Label}`
@@ -402,5 +402,6 @@ The `r"""..."""` raw string prefix ensures backslashes are written as-is.
 - `references/bullet-length-consistency.md` — Bullet length measurement and normalization
 - `references/double-backslash-debugging.md` — Double backslash detection and fix patterns
 - `references/latex-metadata-header-bug.md` — Metadata header bug description and fix
+
 
 

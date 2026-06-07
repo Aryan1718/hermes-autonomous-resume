@@ -114,7 +114,7 @@ See `references/api-reference.md` for complete endpoint documentation, response 
 - **In cron mode:** Write Python helper scripts to disk via `write_file`, then execute via `terminal`. See `references/api-helper-scripts.md` for reusable patterns.
 - **No user interaction during automated runs.** Do NOT use clarify, do NOT ask for permission. Make decisions and proceed.
 - **Bullet length consistency:** ALL bullets must be 230-320 chars (target 250-300). After writing every bullet, measure length. Bullets outside this range MUST be adjusted before pushing. All sections (work experience + projects) must have consistent bullet lengths — no section should be noticeably longer or shorter than another.
-- **Point budget enforcement:** Cloud2 OSD=3 max, SWE Intern=2 max, Alps=2 max, <WORK_EXPERIENCE_COMPANY_3>=2 max. Projects=2 each (KTX=3). TOTAL MAX = 16. Count bullets per section and verify NONE exceeds its limit. If over budget, compress or merge — never exceed. **Before pushing, confirm: every section respects its budget and total ≤16.**
+- **Point budget enforcement:** Use the section budgets derived by `point-repointing` from the current candidate's resume shape. Most sections should have 2 bullets. Use 3 only for unusually strong anchor roles or projects with distinct coverage. Count bullets per section and verify none exceeds its justified limit. If over budget, compress or merge — never exceed what the one-page layout can support.
 - **Mid-run quality gate (after every 3rd JD in a batch):** Before continuing, review the last resume's bullets. Check length, specificity, no `--`, bold terms, and bullet count per section. If quality is degrading, re-read raw.md for the next JD before proceeding. Better to produce 7 excellent resumes than 10 mediocre ones.
 
 **References:**
@@ -138,7 +138,7 @@ After every pipeline execution (including single JD test runs), BEFORE pushing t
    - Numbers and keywords bolded? Every bullet must have **at least 2 bold terms** (technologies, tools, metrics, or key concepts).
    - **Bullet length — ALL bullets must be 230-320 chars (target 250-300).** Measure every bullet. Any bullet under 230 chars MUST be expanded. Any bullet over 320 chars MUST be compressed. Use the Redis caching bullet as the reference example (~285 chars): "Deployed a Redis caching layer on AWS with cache refresh controls for a production SaaS platform serving thousands of users, reducing database load by 75% on time-sensitive operational workflows and improving response consistency during traffic spikes." After normalizing, verify that work-experience bullets and project bullets are in the same range — no section should be noticeably longer or shorter than another.
    - No invented skills or metrics?
-   - **Bullet budget per section — both bounds?** Minimum 14 total. MAXIMUM per Point Budget (Cloud2 OSD=3, SWE Intern=2, Alps=2, <WORK_EXPERIENCE_COMPANY_3>=2, projects=2 each, KTX=3). Total max = 16. Count per section and verify NONE exceeds budget.
+   - **Bullet budget per section — respected?** Verify each section stays within the dynamic budget chosen by `point-repointing`, and verify the overall resume still fits cleanly on one page. Prefer fewer stronger bullets over padded sections.
    - **Specificity check:** Every bullet must name specific technologies, system names, or exact metrics. Bullets like "Built scalable backend services" are too generic and MUST be rewritten with named technologies and numbers.
 
 3. **File format check:**
@@ -744,6 +744,8 @@ Check the dashboard for:
 *Reads: `candidate-profile`, `pool-versioning`*
 *Writes: pool version files, `idx.md` files, `/opt/data/profiles/<PROFILE_SLUG>/home/<RESUMES_DIR>/*.tex`*
 *API: GET `/api/job-descriptions/next` · POST `/api/generated-resumes` · PATCH `/api/job-descriptions/{id}/use` · POST `/api/workflow-logs`*
+
+
 
 
 

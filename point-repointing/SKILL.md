@@ -156,7 +156,7 @@ honesty_flags:
 
 **Measure EVERY bullet.** Under 230 → expand. Over 320 → compress. Target 250-300.
 
-**Count bullets per section.** Cloud2 OSD=3, SWE Intern=2, Alps=2, <WORK_EXPERIENCE_COMPANY_3>=2. Projects=2 each (KTX=3). Total max=16. Over budget → compress.
+**Count bullets per section.** Use the candidate's actual resume shape and one-page constraints. Most sections should have 2 bullets. Allow 3 only for an especially relevant anchor role or project with clearly distinct evidence. Over budget → compress.
 
 **Do NOT proceed with failing bullets. Fix or skip.**
 
@@ -164,23 +164,23 @@ honesty_flags:
 
 ## Point Budget Per Section
 
-### Work Experience
-| Section | Max Bullets |
-|---|---|
-| <WORK_EXPERIENCE_COMPANY_1> — <ROLE_TITLE_1> (<DATE_RANGE_1>) | **3** |
-| <WORK_EXPERIENCE_COMPANY_1> — <ROLE_TITLE_2> (<DATE_RANGE_2>) | **2** |
-| <WORK_EXPERIENCE_COMPANY_2> | **2** |
-| <WORK_EXPERIENCE_COMPANY_3> | **2** |
+Derive the budget from the candidate's actual content and one-page layout constraints rather than from a fixed profile.
 
-### Projects
-| Project | Max Bullets |
+### Default budget rules
+| Section type | Max Bullets |
 |---|---|
-| <OSS_PROJECT_NAME> (if selected) | **3** |
-| All other selected projects | **2** (expand to 3 only if 3+ unique priority:A requirements) |
+| Single-role work experience entry | **2** |
+| High-signal work experience entry | **3** if it covers multiple distinct JD requirements |
+| Most recent role in a multi-role company entry | **2** |
+| Earlier role in a multi-role company entry | **1-2** depending on unique evidence |
+| Standard selected project | **2** |
+| Anchor project | **3** if it carries unusually broad or high-priority coverage |
 
 ### Fit within budget
 - Compress related contributions into one bullet. Use semicolons for closely related items.
-- **Never exceed budget.** One page only.
+- Prefer 2 strong bullets over 3 diluted ones.
+- Only use 3 bullets when the extra bullet adds distinct JD-relevant proof.
+- **Never exceed what the one-page layout can support.**
 
 ---
 
@@ -222,9 +222,9 @@ projects:
       - "<bullet 2>"
 
 work_experience:
-  - role: "<ROLE_TITLE_2>"
-    company: "<WORK_EXPERIENCE_COMPANY_1>"
-    date: "<CURRENT_ROLE_DATE_RANGE>"
+  - role: "<ROLE_TITLE>"
+    company: "<COMPANY_NAME>"
+    date: "<DATE_RANGE>"
     points:
       - "<bullets for this role>"
 
@@ -293,5 +293,8 @@ Aim, don't author. Mirror the JD's verbs honestly. Foreground the metric this JD
 - `references/repointing-methodology.md` — Detailed repointing methodology with examples
 - `references/worked-example.md` — Full worked example end-to-end
 - `references/cron-failure-patterns.md` — Documented failure patterns from cron runs
+
+
+
 
 

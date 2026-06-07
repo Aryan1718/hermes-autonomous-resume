@@ -17,8 +17,8 @@ Complete LaTeX template with all sections. Use this as the structural reference 
 \begin{center}
 \thispagestyle{empty}
 
-\large \textbf{ARYAN PANDIT} \\
-Fullerton, CA $\mid$ +1-714-519-7675 $\mid$
+\large \textbf{<CANDIDATE_NAME>} \\
+<CITY>, <STATE> $\mid$ <PHONE_NUMBER> $\mid$
 \href{mailto:<CANDIDATE_EMAIL>}{<CANDIDATE_EMAIL>} $\mid$
 \href{<LINKEDIN_URL>}{\textcolor{blue}{LinkedIn}} $\mid$
 \href{<GITHUB_PROFILE_URL>}{\textcolor{blue}{GitHub}}
@@ -29,13 +29,13 @@ Fullerton, CA $\mid$ +1-714-519-7675 $\mid$
 \noindent \textbf{EDUCATION} \vspace{-8pt} \\
 \rule{\linewidth}{0.5pt}
 
-\noindent \textbf{California State University, Fullerton} \hfill \textbf{Aug 2024 – May 2026} \\
-\textit{Master of Science in Computer Science}
+\noindent \textbf{<INSTITUTION_NAME_1>} \hfill \textbf{<DATE_RANGE_1>} \\
+\textit{<DEGREE_1>}
 
 \vspace{1.5mm}
 
-\noindent \textbf{Institute of Computer Technology} \hfill \textbf{Jul 2019 – Jun 2023} \\
-\textit{B.Tech in Computer Science Engineering}
+\noindent \textbf{<INSTITUTION_NAME_2>} \hfill \textbf{<DATE_RANGE_2>} \\
+\textit{<DEGREE_2>}
 
 \vspace{3mm}
 
@@ -43,11 +43,11 @@ Fullerton, CA $\mid$ +1-714-519-7675 $\mid$
 \noindent \textbf{TECHNICAL SKILLS} \vspace{-8pt} \\
 \rule{\linewidth}{0.5pt}
 
-\noindent \textbf{Languages:} Python, TypeScript, JavaScript, Java, C++ \\
-\textbf{Frameworks:} React, Next.js, FastAPI, Flask, Node.js, LangGraph, CrewAI \\
-\textbf{Databases:} PostgreSQL, Redis, MongoDB, DynamoDB \\
-\textbf{Cloud \& Tools:} AWS, Docker, Docker Compose, GitHub Actions, CI/CD, Ollama, VLLM \\
-\textbf{Concepts:} API Design, Distributed Systems, Multi-Agent Orchestration, RAG, LLM Inference, Observability
+\noindent \textbf{Languages:} <LANGUAGE_1>, <LANGUAGE_2>, <LANGUAGE_3> \\
+\textbf{Frameworks:} <FRAMEWORK_1>, <FRAMEWORK_2>, <FRAMEWORK_3> \\
+\textbf{Databases:} <DATABASE_1>, <DATABASE_2>, <DATABASE_3> \\
+\textbf{Cloud \& Tools:} <TOOL_1>, <TOOL_2>, <TOOL_3> \\
+\textbf{Concepts:} <CONCEPT_1>, <CONCEPT_2>, <CONCEPT_3>, <CONCEPT_4>, <CONCEPT_5>, <CONCEPT_6>
 
 %--- PROFESSIONAL EXPERIENCE ---
 \vspace{3mm}
@@ -67,12 +67,12 @@ Fullerton, CA $\mid$ +1-714-519-7675 $\mid$
 \end{itemize}
 }
 
-% Multi-role stacked example (<WORK_EXPERIENCE_COMPANY_1>):
+% Multi-role stacked example (<COMPANY_NAME>):
 \vspace{3mm}
 
-{\large \noindent \textbf{<WORK_EXPERIENCE_COMPANY_1>}} \hfill \textbf{Jan 2026 – Present}
+{\large \noindent \textbf{<COMPANY_NAME>}} \hfill \textbf{<OVERALL_DATE_RANGE>}
 
-\noindent \textbf{<ROLE_TITLE_2>} \hfill \textbf{May 2026 – Present}
+\noindent \textbf{<MOST_RECENT_ROLE_TITLE>} \hfill \textbf{<MOST_RECENT_ROLE_DATE_RANGE>}
 
 {\small
 \begin{itemize}[noitemsep, nolistsep, leftmargin=*, itemsep=1mm]
@@ -84,7 +84,7 @@ Fullerton, CA $\mid$ +1-714-519-7675 $\mid$
 
 \vspace{2mm}
 
-\noindent \textbf{<ROLE_TITLE_1>} \hfill \textbf{Jan 2026 – Apr 2026}
+\noindent \textbf{<EARLIER_ROLE_TITLE>} \hfill \textbf{<EARLIER_ROLE_DATE_RANGE>}
 
 {\small
 \begin{itemize}[noitemsep, nolistsep, leftmargin=*, itemsep=1mm]
@@ -132,10 +132,11 @@ Fullerton, CA $\mid$ +1-714-519-7675 $\mid$
 
 ## Template Rules
 
-- Header contact details are STATIC — never change across resumes
-- Education is STATIC — same entries on every resume
+- Header contact details are STATIC for the current candidate — never change across that candidate's resumes
+- Education is STATIC for the current candidate — same entries on every resume
 - Technical Skills changes per JD (from `technical_skills_update`)
 - Professional Experience bullets change per JD (from point-repointing)
 - Projects change per JD (3 selected projects from project-selection)
 - Always verify: single backslashes, line 1 = `\documentclass{article}`, no metadata headers
+
 

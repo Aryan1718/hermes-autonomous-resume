@@ -14,13 +14,13 @@ Every education entry must be separated by:
 ## Correct Format
 
 ```latex
-\noindent \textbf{California State University, Fullerton} \hfill \textbf{Aug 2024 – May 2026} \\
-\textit{Master of Science in Computer Science}
+\noindent \textbf{<INSTITUTION_NAME_1>} \hfill \textbf{<DATE_RANGE_1>} \\
+\textit{<DEGREE_1>}
 
 \vspace{1.5mm}
 
-\noindent \textbf{Institute of Computer Technology} \hfill \textbf{Jul 2019 – Jun 2023} \\
-\textit{B.Tech in Computer Science Engineering}
+\noindent \textbf{<INSTITUTION_NAME_2>} \hfill \textbf{<DATE_RANGE_2>} \\
+\textit{<DEGREE_2>}
 ```
 
 Note: blank line above `\vspace{1.5mm}`, blank line below it.
@@ -30,7 +30,7 @@ Note: blank line above `\vspace{1.5mm}`, blank line below it.
 Add BLANK LINE + `\vspace{3mm}` + BLANK LINE before the TECHNICAL SKILLS section heading:
 
 ```latex
-\textit{B.Tech in Computer Science Engineering}
+\textit{<DEGREE_2>}
 
 \vspace{3mm}
 
@@ -40,6 +40,7 @@ Add BLANK LINE + `\vspace{3mm}` + BLANK LINE before the TECHNICAL SKILLS section
 
 ## Education is Never Modified
 
-Same 2 entries, same dates, same formatting on every resume. Copy as-is.
-- California State University, Fullerton | Aug 2024 – May 2026 | MS in CS
-- Institute of Computer Technology | Jul 2019 – Jun 2023 | B.Tech in CSE
+Education is static for the current candidate. Keep the same entries, dates, and formatting across that candidate's resumes.
+- <INSTITUTION_NAME_1> | <DATE_RANGE_1> | MS in CS
+- <INSTITUTION_NAME_2> | <DATE_RANGE_2> | B.Tech in CSE
+

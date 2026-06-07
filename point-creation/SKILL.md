@@ -81,13 +81,13 @@ Every bullet follows this 3-part structure:
 3. **Impact** — what it achieved, quantified if possible (saved time, improved accuracy, reduced cost, scaled to X users, handled Y volume). Without a number, at minimum a clear result.
 
 **Good examples (complete sentences with verb + what + impact):**
-- ✅ "Rebuilt the healthcare AI pipeline's SOAP notes agent from scratch using Python and CrewAI, restructuring clinical output and mapping to medical codes"
+- ✅ "Rebuilt the <TARGET_DOMAIN> pipeline's <DOMAIN_TASK_1> agent from scratch using Python and CrewAI, restructuring clinical output and mapping to medical codes"
 - ✅ "Built 4 of 15 AI application blueprints from scratch for the Innovation Hub open-source platform using Python, CrewAI, and LangGraph, handling ongoing updates across the full catalog"
 - ✅ "Enforced RBAC/ABAC access control across the FastAPI multi-agent orchestration layer, ensuring each agent accesses only authorized data"
 - ✅ "Optimized the production SaaS FastAPI backend by deploying Redis on AWS, reducing database load by 75% for time-sensitive operational workflows"
 
 **Not (fragment — starts with noun phrase, no clear action):**
-- ❌ "Healthcare AI multi-agent pipeline, rebuilding SOAP notes and billing codes agents..." (no proper verb, fragment)
+- ❌ "Healthcare AI multi-agent pipeline, rebuilding <DOMAIN_TASK_1> and <DOMAIN_TASK_2> agents..." (no proper verb, fragment)
 - ❌ "Innovation Hub open-source AI platform, independently built 4 of 15 blueprints..." (starts with noun phrase, not a sentence)
 
 **Not (no impact — reads like a job description):**
@@ -102,10 +102,10 @@ Every bullet follows this 3-part structure:
 
 ### No Batch/Label Metadata in Bullets
 
-Never include accelerator batch labels (e.g., "YC P25"), funding rounds, or similar metadata inside bullet text. The project name in the LaTeX title line already identifies the platform. Bullets describe the work, not the company's background.
+Never include accelerator batch labels (e.g., "<ACCELERATOR_COHORT>"), funding rounds, or similar metadata inside bullet text. The project name in the LaTeX title line already identifies the platform. Bullets describe the work, not the company's background.
 
 - ✅ "Delivered a <PR_TITLE_1> for <OSS_PROJECT_NAME>, building end-to-end document ingestion..."
-- ❌ "Delivered a <PR_TITLE_1> for a YC P25 platform, building..."
+- ❌ "Delivered a <PR_TITLE_1> for a <ACCELERATOR_COHORT> platform, building..."
 
 This file optimizes for `future AI sessions` first.
 
@@ -295,9 +295,9 @@ Ask three questions before drafting:
 
 | Before (bad) | After (good) |
 |---|---|
-| `Rebuilding SOAP notes agents using Python and CrewAI...` (verb but no system name, no impact) | `Rebuilt the healthcare AI pipeline's SOAP notes agent from scratch using Python and CrewAI, restructuring clinical output and mapping to medical codes` |
+| `Rebuilding <DOMAIN_TASK_1> agents using Python and CrewAI...` (verb but no system name, no impact) | `Rebuilt the <TARGET_DOMAIN> pipeline's <DOMAIN_TASK_1> agent from scratch using Python and CrewAI, restructuring clinical output and mapping to medical codes` |
 | `Built 4 of 15 blueprints using Python...` (number first, no system name) | `Independently built 4 of 15 AI application blueprints for the Innovation Hub open-source platform using Python, CrewAI, and LangGraph, handling ongoing updates across the full catalog` |
-| `Healthcare AI multi-agent pipeline, rebuilding SOAP notes...` (noun phrase fragment) | `Rebuilt the healthcare AI multi-agent pipeline's SOAP notes agent using Python and CrewAI, restructuring clinical output and mapping to medical codes` |
+| `Healthcare AI multi-agent pipeline, rebuilding <DOMAIN_TASK_1>...` (noun phrase fragment) | `Rebuilt the <TARGET_DOMAIN> multi-agent pipeline's <DOMAIN_TASK_1> agent using Python and CrewAI, restructuring clinical output and mapping to medical codes` |
 | `Built a Python platform managing LLM fine-tuning` (no impact) | `Built a Python and FastAPI platform managing the full LLM fine-tuning lifecycle, supporting Markdown ingestion and hardware-aware training routing across MLX, Unsloth, and Colab` |
 
 **Role clarity:** Indicate ownership level — "Independently built...", "Led the rebuild of...", "Owned end-to-end...", "Contributed to..."
@@ -307,7 +307,7 @@ Ask three questions before drafting:
 Do not lead with product names if the actual work was broader than the product name.
 
 Bad pattern:
-- leading with `OmniRoute`, `AccessIQ`, or `Innovation Hub` before the reader even knows what kind of work was done
+- leading with `<SYSTEM_NAME_2>`, `<SYSTEM_NAME_1>`, or `Innovation Hub` before the reader even knows what kind of work was done
 
 Better pattern:
 - first describe the broader capability
@@ -316,7 +316,7 @@ Better pattern:
 Example:
 
 Instead of:
-- `Built OmniRoute for transportation using multiple agents`
+- `Built <SYSTEM_NAME_2> for transportation using multiple agents`
 
 Prefer:
 - `Designed a multi-agent blueprint for a transportation use case...`
@@ -379,14 +379,14 @@ Weak patterns:
 
 Bad examples:
 - `Used Python, FastAPI, and Redis`
-- `Worked on OmniRoute`
+- `Worked on <SYSTEM_NAME_2>`
 - `Implemented caching`
-- `Rebuilding SOAP notes agents using Python and CrewAI`
+- `Rebuilding <DOMAIN_TASK_1> agents using Python and CrewAI`
 - `Built 4 of 15 blueprints from scratch using Python`
 - `75% reduction in database load using Redis`
 
 Good examples:
-- `Healthcare AI pipeline for clinical documentation, rebuilding SOAP notes and billing codes agents end-to-end using Python and CrewAI`
+- `Healthcare AI pipeline for clinical documentation, rebuilding <DOMAIN_TASK_1> and <DOMAIN_TASK_2> agents end-to-end using Python and CrewAI`
 - `Innovation Hub open-source AI platform, independently built 4 of 15 blueprints from scratch using Python, CrewAI, and LangGraph`
 - `Production SaaS backend, deployed Redis caching on AWS reducing database load by 75% for time-sensitive workflows`
 
@@ -416,7 +416,7 @@ Omit or compress:
 - low-signal filler wording
 - duplicate explanations across overview and detail
 - product names when they do not add understanding
-- batch/accelerator labels (YC P25, etc.) — these belong in the LaTeX title line, not the bullet
+- batch/accelerator labels (<ACCELERATOR_COHORT>, etc.) — these belong in the LaTeX title line, not the bullet
 
 ## Method Mapping By Point Type
 
@@ -486,7 +486,7 @@ Good heuristics:
 
 **6. Role clarity.** Indicate ownership: "Independently built...", "Led...", "Owned end-to-end...", "Contributed to..."
 
-**7. No batch/label metadata.** Never include accelerator labels (YC P25), funding rounds, or similar metadata in bullet text. These belong in the LaTeX title line.
+**7. No batch/label metadata.** Never include accelerator labels (<ACCELERATOR_COHORT>), funding rounds, or similar metadata in bullet text. These belong in the LaTeX title line.
 
 **8. No em dashes.** (Reiterated for emphasis) Never use `—` or `--` anywhere. Read every bullet aloud — if you'd say "dash", rewrite with comma/semicolon/new sentence.
 
@@ -534,7 +534,7 @@ Example:
 
 Before finalizing points, check:
 - **Does the bullet start with an action verb?** (Gate check — if it starts with a noun phrase like "Healthcare AI pipeline..." or a number like "4 of 15..." or a metric like "75%...", rewrite to start with a verb like "Built", "Rebuilt", "Engineered")
-- **Is it a complete sentence, not a fragment?** (Gate check — "Healthcare AI pipeline, rebuilding..." is a fragment. "Rebuilt the healthcare AI pipeline's agent..." is a sentence)
+- **Is it a complete sentence, not a fragment?** (Gate check — "Healthcare AI pipeline, rebuilding..." is a fragment. "Rebuilt the <TARGET_DOMAIN> pipeline's agent..." is a sentence)
 - **Does it have an impact/outcome?** (Gate check — "Built a Python platform" is activity. "Built a Python platform, supporting X and achieving Y" is achievement. Every bullet needs a "so what")
 - **Is ownership clear?** ("Independently built", "Led", "Owned end-to-end" — not invisible)
 - Does the overview represent the full role, not just one project?
@@ -542,7 +542,7 @@ Before finalizing points, check:
 - **No em dashes anywhere.** (Gate check — read aloud, if you'd say "dash", rewrite)
 - **All numbers bolded.** (Gate check)
 - **Target ~175 chars per bullet.** (Gate check)
-- **No batch/label metadata in bullets.** No YC P25, funding rounds, etc.
+- **No batch/label metadata in bullets.** No <ACCELERATOR_COHORT>, funding rounds, etc.
 - **Is this bullet JD-specific?** (Gate check — could this exact bullet appear on a resume for a completely different JD? If yes, it's too generic. Rewrite to emphasize what THIS JD cares about.)
 - **Is this bullet specific, not vague?** (Gate check — does it name concrete systems, numbers, outcomes? Or could it apply to any candidate?)
 
@@ -551,7 +551,7 @@ Before finalizing points, check:
 ### Good Transformation 1
 
 From:
-- `OmniRoute multi-agent orchestration for transportation workflows`
+- `<SYSTEM_NAME_2> multi-agent orchestration for transportation workflows`
 
 To:
 - `Multi-Agent Orchestration`
@@ -564,7 +564,7 @@ Why it improved:
 ### Good Transformation 2
 
 From:
-- `AccessIQ and deterministic authorization before LLM execution`
+- `<SYSTEM_NAME_1> and deterministic authorization before LLM execution`
 
 To:
 - `Authorization and Access Control`
@@ -625,3 +625,4 @@ Then choose the right method.
 Then compress for clarity.
 Then surface numbers for credibility.
 Aim for ~175-200 characters per bullet with context-first framing.
+

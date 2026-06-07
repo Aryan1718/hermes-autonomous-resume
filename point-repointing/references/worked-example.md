@@ -7,12 +7,12 @@
 ### Load Phase
 
 Extract reads idx.md + raw.md for:
-- 3 selected projects: KTX <ACCELERATOR_COHORT> (covers: multi-agent AI, LLM inference, Python), <PROJECT_NAME_1> (covers: SDK/middleware, backend API), <PROJECT_NAME_4> (covers: backend API, cloud/DevOps)
+- 3 selected projects: <OSS_PROJECT_NAME> <ACCELERATOR_COHORT> (covers: multi-agent AI, LLM inference, Python), <PROJECT_NAME_1> (covers: SDK/middleware, backend API), <PROJECT_NAME_4> (covers: backend API, cloud/DevOps)
 - 3 work-experience roles: <WORK_EXPERIENCE_COMPANY_1> OSD, <WORK_EXPERIENCE_COMPANY_1> Intern, <WORK_EXPERIENCE_COMPANY_2>, <WORK_EXPERIENCE_COMPANY_3>
 
 ### Track A Aim Lists
 
-**KTX <ACCELERATOR_COHORT>** (covers = multi-agent AI orchestration[A], LLM inference[A], Python[B]):
+**<OSS_PROJECT_NAME> <ACCELERATOR_COHORT>** (covers = multi-agent AI orchestration[A], LLM inference[A], Python[B]):
 - Lead: multi-agent AI orchestration (priority A, verb: "architect" → honestly "develop and contribute" since it's an OSS contribution, not sole architecture)
 
 **<PROJECT_NAME_1>** (covers: SDK/middleware[A], backend API[A]):
@@ -28,8 +28,8 @@ Extract reads idx.md + raw.md for:
 - Lead: multi-agent orchestration → verb: "develop" → foreground: 4 inference environments, LangSmith + LangFuse
 
 **<WORK_EXPERIENCE_COMPANY_1> — <ROLE_TITLE_2> (<DATE_RANGE_2>):**
-- Requirements from raw: healthcare AI (A), access control/RBAC (A), frontend/React (B)
-- Lead: healthcare AI workflow → verb: "rebuild" → foreground: SOAP notes + billing codes agent
+- Requirements from raw: <TARGET_DOMAIN> (A), access control/RBAC (A), frontend/React (B)
+- Lead: <TARGET_DOMAIN> workflow → verb: "rebuild" → foreground: <DOMAIN_TASK_1> + <DOMAIN_TASK_2> agent
 
 **<WORK_EXPERIENCE_COMPANY_2>:**
 - Requirements from raw: backend API at scale (A), caching/Redis (A), AWS/cloud (B), latency optimization (B)
@@ -41,12 +41,12 @@ Extract reads idx.md + raw.md for:
 
 ### Re-Pointed Bullets (examples)
 
-**KTX <ACCELERATOR_COHORT> — Lead bullet (multi-agent AI orchestration):**
-> "Developed and contributed a Google Drive integration for the open-source AI data platform KTX (500+ GitHub stars), enabling AI agents to securely ingest and retrieve knowledge from Google Drive documents; recognized as the project's first external contributor"
+**<OSS_PROJECT_NAME> <ACCELERATOR_COHORT> — Lead bullet (multi-agent AI orchestration):**
+> "Developed and contributed a <EXTERNAL_PLATFORM> integration for the open-source AI data platform <OSS_PROJECT_NAME> (500+ GitHub stars), enabling AI agents to securely ingest and retrieve knowledge from <EXTERNAL_PLATFORM> documents; recognized as the project's first external contributor"
 (~280 chars, lead with capability, implementation details in supporting bullets)
 
-**<WORK_EXPERIENCE_COMPANY_1> Intern — Lead bullet (healthcare AI):**
-> "Rebuilding SOAP notes and medical billing code agents end-to-end for a healthcare AI product serving thousands of clinicians, implementing strict RBAC/ABAC access control around protected health information (PHI)"
+**<WORK_EXPERIENCE_COMPANY_1> Intern — Lead bullet (<TARGET_DOMAIN>):**
+> "Rebuilding <DOMAIN_TASK_1> and <DOMAIN_TASK_2> agents end-to-end for a <TARGET_DOMAIN> product serving thousands of clinicians, implementing strict RBAC/ABAC access control around protected health information (<REGULATED_DATA_TYPE>)"
 (~250 chars, specific: product type, compliance constraint, scale)
 
 **<WORK_EXPERIENCE_COMPANY_2> — Lead bullet (backend API scaling):**
@@ -56,5 +56,6 @@ Extract reads idx.md + raw.md for:
 ### Consistency Check
 
 All bullets measured: 230-320 chars range. No `--` found. All have ≥2 bold terms. All have problem→action→outcome. No overlap between OSD and Intern bullets at <WORK_EXPERIENCE_COMPANY_1>. Technical Skills reordered with Multi-Agent Orchestration, RAG, LLM Inference promoted to front of Concepts row.
+
 
 

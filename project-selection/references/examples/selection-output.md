@@ -78,7 +78,7 @@ runner_up_projects:
   - project_id: "multidoc-rag"
     title: "MultiDoc RAG"
     total_score: 68
-    why_not_selected: "Covers similar ground as KTX (AI/AI agents) but without OSS validation. KTX dominates this slot."
+    why_not_selected: "Covers similar ground as <OSS_PROJECT_NAME> (AI/AI agents) but without OSS validation. <OSS_PROJECT_NAME> dominates this slot."
 
 coverage_summary:
   covered_priority_A: ["Multi-agent AI orchestration", "LLM inference pipelines", "Backend API at scale", "SDK/middleware engineering"]
@@ -103,4 +103,5 @@ open_questions: []
 - Always comes after the project name, before the tech stack
 - Separators are ` $\mid$ ` on both sides
 - Bullets below follow identical formatting to personal projects
+
 

@@ -19,7 +19,7 @@ When a candidate has multiple merged PRs for the same repository, combine them i
 
 ## Example raw.md Heading
 ```markdown
-# <OSS_PROJECT_NAME> (<ACCELERATOR_COHORT>) — Google Drive Context Source + Windows Build Fix
+# <OSS_PROJECT_NAME> (<ACCELERATOR_COHORT>) — <EXTERNAL_PLATFORM> Context Source + Windows Build Fix
 ```
 
 ## Example pr_links Field
@@ -51,6 +51,7 @@ When you have merged PRs AND an active issue investigation in progress on the sa
 ## Real-World Example from This Session
 See: `pool/oss/ktx-yc-x25-contributions/raw.md`
 Archived: `_archived-ktx-google-drive-context-source/`, `_archived-ktx-windows-pnpm-artifacts-fix/`
+
 
 
 

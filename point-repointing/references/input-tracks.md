@@ -24,7 +24,7 @@ When a raw file contains **multiple roles at the same company** (e.g., <WORK_EXP
 - Both roles always go on the resume
 - Each role's bullets must cover DISTINCT work — no overlap
 - OSD bullets → earlier phase work (blueprints, Innovation Hub, inference environments)
-- Intern bullets → current phase work (healthcare AI, SOAP notes, billing codes, frontend)
+- Intern bullets → current phase work (<TARGET_DOMAIN>, <DOMAIN_TASK_1>, <DOMAIN_TASK_2>, frontend)
 - Never let the same system appear as the lead in both roles
 
 ## The Orchestrator's Responsibility
@@ -40,4 +40,5 @@ ls "$POOL_DIR/work-experience/"
 #      "$POOL_DIR/work-experience/alps-web-solutions/"
 #      "$POOL_DIR/work-experience/bisag-n/"
 ```
+
 

@@ -152,7 +152,7 @@ The slug is the folder name. It is derived in this order of preference:
 | Input | Derived slug |
 |---|---|
 | `slug: langchain-context-fix` | `langchain-context-fix` |
-| `name: Enterprise RAG Platform` | `enterprise-rag-platform` |
+| `name: <PROJECT_NAME_EXAMPLE>` | `<project-slug-example>` |
 | `name: <WORK_EXPERIENCE_COMPANY_1> — AI/ML Intern` | `<work-company-slug>-ai-ml-intern` |
 | filename `oss_fastapi_middleware_pr.md` | `fastapi-middleware-pr` |
 
@@ -672,9 +672,9 @@ action_required: >
 ```yaml
 intake_status: FAILED
 file: <original filename>
-slug: enterprise-rag-platform
+slug: <project-slug-example>
 error: SLUG_CONFLICT
-existing_location: pool/projects/enterprise-rag-platform/
+existing_location: pool/projects/<project-slug-example>/
 existing_versions: 3
 message: >
   A pool item with this slug already exists and has active version history.
@@ -701,10 +701,10 @@ action_required: >
 12. **Combining multiple OSS PRs to the same repo.** When the user has multiple merged PRs for the same repository, combine them into a single pool entry rather than creating separate ones. Use the repo name as the project name, list all PR links under `pr_links:`, and merge the contribution descriptions into one coherent entry. This creates a stronger narrative (shows repeated meaningful contribution to one project) and saves resume project slots for other work. Archive the individual entries if they were already created separately. See `references/combined-oss-pr-same-repo.md` for a worked example.
 
 14. **Project title convention for `raw.md` `#` heading.** The first heading in `raw.md` becomes the project title on the resume. Keep it **concise** — just the project/repo name and any notable branding. Do NOT include descriptive subtitles, contribution summaries, or technology lists in the title. The `What Changed` section exists for details.
-    - ✅ `# <OSS_PROJECT_NAME> (YC P25)` — clean, recognizable, concise
+    - ✅ `# <OSS_PROJECT_NAME> (<ACCELERATOR_COHORT>)` — clean, recognizable, concise
     - ✅ `# <OSS_PROJECT_NAME_2> — Server URL Edit Fix` — repo + brief context if needed for disambiguation
-    - `# <OSS_PROJECT_NAME> — Google Drive Adapter + Windows Fix + Runtime Smoke Fix` — contribution details belong in body, not title
-    - ✗ `# <OSS_PROJECT_NAME> (YC P25) — Google Drive Context Source + Windows Build Fix + Runtime Smoke Fix` — too long; all contributions described in detail below
+    - `# <OSS_PROJECT_NAME> — <EXTERNAL_PLATFORM> Adapter + Windows Fix + Runtime Smoke Fix` — contribution details belong in body, not title
+    - ✗ `# <OSS_PROJECT_NAME> (<ACCELERATOR_COHORT>) — <EXTERNAL_PLATFORM> Context Source + Windows Build Fix + Runtime Smoke Fix` — too long; all contributions described in detail below
 
 13. **Transforming free-form content into raw.md without preserving all data.** When a file comes in without the proper schema, the agent must transform it into the raw.md format while preserving ALL original details — responsibilities, metrics, dates, skills, links, `Differentiators`, `Impact / Outcomes`, `Key Decisions`, and bulleted lists. Never summarize or drop content during transformation. Key sections most at risk: `Differentiators`, `Impact / Outcomes`, `Key Decisions` — explicitly verify these are present after every merge or transformation.
 
@@ -723,6 +723,7 @@ action_required: >
 ---
 
 *This guide runs once per uploaded file, before any main pipeline step. After successful intake, the item is available to the `project-selection` skill and the `point-repointing` skill. Pool structure is governed by the `pool-versioning` skill.*
+
 
 
 

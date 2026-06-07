@@ -55,7 +55,7 @@ domain: [domain]
 
 1. **Each role block is self-contained.** Every section (What Was Done, Ownership, Technical Scope, Metrics, Honest Proof) must contain ONLY content from that role's time period.
 2. **Never merge content across roles.** If a system (e.g., multi-agent orchestration) existed in both roles, each role's description should focus on what was *distinctive* to that phase.
-3. **Separate honest proof per role.** Role 1 might prove "blueprint architecture" while Role 2 proves "healthcare AI domain." Don't claim both for both.
+3. **Separate honest proof per role.** Role 1 might prove "blueprint architecture" while Role 2 proves "<TARGET_DOMAIN> domain." Don't claim both for both.
 4. **During re-pointing:** the agent reads ONLY the role block matching `role_phase`. It stops reading after that block ends.
 
 ## Real-World Example
@@ -65,10 +65,11 @@ See `/opt/data/profiles/<PROFILE_SLUG>/workspace/<POOL_DIR>/work-experience/<wor
 ## Why This Matters
 
 When both roles were merged in a single raw.md, re-pointing for Role 2 would load Role 1's content too, causing:
-- KTX OSS bullets appearing in <WORK_EXPERIENCE_COMPANY_1> versions
+- <OSS_PROJECT_NAME> OSS bullets appearing in <WORK_EXPERIENCE_COMPANY_1> versions
 - RBAC/ABAC work claimed by both roles indistinguishably
 - Inability to differentiate what each role actually proved
 
 The block format makes cross-role contamination structurally impossible.
+
 
 

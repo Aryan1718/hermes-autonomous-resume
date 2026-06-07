@@ -99,7 +99,7 @@ Context stays clean regardless of how many JDs have been run.
 > **Replacement note:** The old `projects/master.md` (projects-only) has been merged into `masters.md`. If `projects/master.md` still exists, ignore it.
 
 Examples:
-- Project slugs: `enterprise-rag`, `ai-insights-workflow`, `discovermap`
+- Project slugs: `<project-slug-1>`, `ai-insights-workflow`, `<project-slug-2>`
 - OSS slugs: `langchain-context-fix`, `fastapi-middleware-pr`
 - Work experience slugs: `<work-company-slug>`, `alps-web-solutions`, `bisag-n`
 - JD slugs: `synapse-ai-engineer`, `buildfast-backend`, `acme-senior-ai`
@@ -499,5 +499,6 @@ current_version: 0
 
 *Pool base path: `/opt/data/profiles/<PROFILE_SLUG>/workspace/<POOL_DIR>/`*
 *This guide is the canonical reference for all pool file structure, naming, and boundaries.*
+
 
 

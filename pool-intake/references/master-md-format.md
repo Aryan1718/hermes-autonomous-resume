@@ -83,7 +83,7 @@
 - **title:** <OSS_PROJECT_NAME> (<ACCELERATOR_COHORT>)
 - **repo_url:** <GITHUB_REPO_URL>
 - **domain:** AI/ML Tooling
-- **tech:** TypeScript, Node.js, Google Drive API, Google Docs API, Service Account Auth, CLI Tooling, MCP, pnpm, OSS Collaboration
+- **tech:** TypeScript, Node.js, <EXTERNAL_PLATFORM> API, <EXTERNAL_API_2>, Service Account Auth, CLI Tooling, MCP, pnpm, OSS Collaboration
 - **tagline:** First external contributor to <ACCELERATOR_COHORT> AI data agents platform — 2 merged PRs (<PR_TITLE_1> + Windows pnpm fix) + active Windows runtime investigation with co-founder
 - **role:** First external contributor — delivered feature adapter integration and cross-platform bug fix as production-style work
 - **bullets:**
@@ -91,5 +91,6 @@
   - Fixed cross-platform pnpm artifact launcher on Windows by routing through `cmd.exe /d /s /c` while preserving direct execution on macOS/Linux
   - Investigating Windows managed runtime smoke failure (Issue #219) — reproduced, validated fix on clean Windows Server 2022 install, co-founder requested PR
 ```
+
 
 
