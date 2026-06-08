@@ -53,7 +53,7 @@ const config: Config = {
       title: 'Hermes Docs',
       items: [
         {
-          to: '/docs',
+          to: '/docs/getting-started/introduction',
           label: 'Docs',
           position: 'left',
         },
