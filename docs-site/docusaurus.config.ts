@@ -53,13 +53,8 @@ const config: Config = {
       title: 'Hermes Docs',
       items: [
         {
-          to: '/docs/getting-started/introduction',
+          to: '/docs',
           label: 'Docs',
-          position: 'left',
-        },
-        {
-          to: '/docs/architecture/system-design',
-          label: 'Architecture',
           position: 'left',
         },
         {
