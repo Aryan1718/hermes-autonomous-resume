@@ -5,118 +5,80 @@ sidebar_position: 1
 slug: /getting-started/introduction
 ---
 
-# Hermes at a glance
+# Hermes Resume Agent
 
 <div className="docBadge">Getting Started</div>
 
-Hermes is a bot for building tailored resumes from your own real knowledge: work experience, projects, and open-source contributions. Instead of rewriting a resume manually for every role, Hermes turns your background into structured evidence, matches that evidence against incoming job descriptions, generates a targeted resume, and pushes the output into a dashboard workflow.
+<div className="docIntro">
+  <p>
+    This documentation explains how to build Hermes, a resume agent that generates tailored resumes from personal knowledge, including work experience, projects, and open-source contributions.
+  </p>
 
-The goal of this documentation is to show how someone can build that system for themselves. This repo covers the pipeline, the skills, the orchestration layer, and the integration points needed to run Hermes on your own infrastructure.
+  <p>
+    The system follows a straightforward workflow. A scraper agent collects new jobs on a schedule, typically in the morning. After that, the resume agent runs the full pipeline for each scraped job description, generates a tailored resume, and pushes the result to the dashboard.
+  </p>
 
-This repository sits inside a broader Hermes loop where:
+  <p>
+    The dashboard used in this setup is a custom implementation, but it can be replaced with any equivalent interface. What matters is that the required backend API contracts are available and integrated correctly. This documentation will include a dedicated section for each API so those integration points can be referenced clearly during implementation.
+  </p>
 
-- a scraper agent collects new jobs, typically on a morning schedule
-- the dashboard stores scraped job descriptions and generated resumes
-- the resume pipeline processes each scraped job description end to end
-- the orchestrator coordinates the skills and pushes results back to the dashboard
-- feedback can be used later to improve the system
+  <p>
+    Hermes uses multiple skills to run the resume pipeline. The main coordination layer is the <code>resume-pipeline-orchestrator</code>, which manages the full pipeline and produces the final resume outputs.
+  </p>
 
-## Why Hermes helps
+  <p>
+    The goal of these docs is to show how this system can be built, deployed on private infrastructure, and adapted to different workflows.
+  </p>
+</div>
 
-Hermes exists to make resume tailoring operational instead of ad hoc.
+## Workflow
 
-- It starts from a **real candidate knowledge base** instead of generic prompting.
-- It turns work history, projects, and OSS into a **structured evidence pool** the pipeline can reuse.
-- It breaks the workflow into **clear skills and stages** instead of one opaque prompt.
-- It supports **batch processing of scraped jobs** rather than one manual resume rewrite at a time.
-- It pushes outputs into a **dashboard workflow** so resume generation is tracked and reviewable.
-
-Hermes owns the candidate-aware decision and resume-generation layer between job scraping and the dashboard.
-
-## How Hermes works
-
-Hermes has two connected sides: first it prepares candidate truth and evidence, then it runs a live job-processing pipeline against scraped roles.
-
-| Layer | What it does |
-|---|---|
-| Candidate setup | Fills `candidate-profile` and runtime placeholders with real candidate-specific values. |
-| Evidence layer | Structures work experience, projects, and OSS contributions into the pool for downstream reuse. |
-| Scraping layer | Collects new jobs and places those job descriptions into the dashboard queue. |
-| Pipeline layer | Filters, extracts, selects, repoints, assembles, and reviews a tailored resume for each job. |
-| Delivery layer | Pushes generated resumes back to the dashboard and records processing outcomes. |
+- Build resumes from real candidate knowledge instead of generic prompting
+- Scrape new jobs automatically through a scraper agent
+- Run the resume pipeline against each scraped job description
+- Generate tailored resumes and push them to a dashboard
+- Use reusable skills and an orchestrator to manage the full system
 
 <div className="flowBlock">
 
 ```mermaid
 flowchart LR
-  A[profile-bootstrap] --> B[candidate-profile]
-  C[pool-intake] --> D[pool-versioning pool]
+  A[Personal knowledge<br/>work experience projects OSS] --> B[Skills and evidence pool]
+  C[Morning scraper agent] --> D[Scraped job descriptions]
   B --> E[resume-pipeline-orchestrator]
   D --> E
-  E --> F[jd-prefilter]
-  F --> G[jd-extraction]
-  G --> H[project-selection]
-  H --> I[point-repointing]
-  I --> J[latex-assembly]
-  J --> K[dashboard push]
+  E --> F[Resume pipeline]
+  F --> G[Tailored resume]
+  G --> H[Dashboard]
 ```
 
 </div>
 
-<div className="flowBlock">
+## Skills
 
-```mermaid
-flowchart LR
-  A[Morning scraper agent] --> B[Dashboard job queue]
-  B --> C[Resume orchestrator]
-  C --> D[Skill pipeline]
-  D --> E[Generated resume]
-  E --> B
-  B --> F[Review and feedback]
-  F --> C
-```
+Hermes is built from multiple skills, each responsible for a specific part of the workflow. The orchestrator connects those skills and manages the end-to-end pipeline.
 
-</div>
+Important parts of the system include:
 
-## What this system is built from
+- scraper-related skills for collecting jobs
+- API-related skills for dashboard and backend integration
+- candidate and evidence skills for storing personal knowledge
+- resume-generation skills for processing job descriptions and creating tailored resumes
+- `resume-pipeline-orchestrator` for running the whole pipeline
 
-Hermes is intentionally broken into small, explicit skills so each stage has a narrow contract.
+## Deployment
 
-The key pieces are:
+In the reference setup documented here, the system runs on a Hostinger VPS, the agents are deployed there, and OpenRouter is used for model access.
 
-- `candidate-profile` for candidate-specific truth
-- `pool-intake` and related pool structure for storing evidence
-- scraper and API-related skills for collecting jobs and integrating with external services
-- `jd-prefilter` for deciding whether a JD is worth deeper work
-- `jd-extraction` for turning the JD into structured signals
-- `project-selection` for choosing the strongest supporting proof
-- `point-repointing` for tailoring bullets without inventing claims
-- `latex-assembly` for producing the final resume artifact
-- `resume-pipeline-orchestrator` for coordinating the entire pipeline run
+The scraper, resume pipeline, and API integrations are documented here so the same approach can be reused in other environments.
 
-The orchestrator is especially important because it is the layer that manages the full resume pipeline. It ties the skills together, processes scraped job descriptions, and generates the final outputs.
+## What you can build
 
-## Deployment model
-
-In the reference setup documented here:
-
-- the agents run on a VPS hosted on Hostinger
-- the model calls go through OpenRouter
-- the scraper, pipeline, and API integration are split into skills
-- the dashboard can be custom-built by anyone, as long as it can work with the backend API contracts
-
-This means you do not need to copy the exact dashboard implementation used here. You can build your own dashboard or workflow UI, but the pipeline still needs stable API endpoints to fetch jobs, push resumes, and track results.
-
-## Use it for
-
-Use Hermes when you need more than a one-off prompt that rewrites a resume once.
-
-- Build a reusable resume bot around your own experience and projects.
-- Process batches of scraped job descriptions automatically.
-- Keep candidate constraints, signals, and proof points consistent across every run.
-- Tailor resumes from structured evidence instead of rewriting from scratch each time.
-- Push outputs into a dashboard workflow instead of keeping results in isolated local files.
-- Run the system on your own VPS and adapt it to your own UI or backend.
+- Building your own Hermes-style resume bot
+- Running automated resume generation from scraped jobs
+- Managing the workflow through reusable skills
+- Deploying the agents on your own VPS
+- Connecting the system to your own dashboard or backend
 
 ## Start here
 
@@ -149,14 +111,6 @@ Choose the route that matches what you want to do next.
   </a>
 </div>
 
-## Community and extension
+## Customization
 
-This repo is the pipeline layer of a larger Hermes system. The scraper, dashboard, and feedback handling can evolve independently as long as the pipeline contracts stay clear.
-
-If you are extending the system, keep these boundaries stable:
-
-- candidate truth belongs in `candidate-profile`
-- evidence belongs in the pool
-- orchestration belongs in `resume-pipeline-orchestrator`
-- scraping belongs in the scraper layer
-- external product surfaces belong in the dashboard and surrounding Hermes services
+This repository documents how the Hermes system is structured so it can be reproduced and adapted to other stacks.
