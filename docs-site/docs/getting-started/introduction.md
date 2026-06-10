@@ -11,7 +11,7 @@ slug: /getting-started/introduction
 
 <div className="docIntro">
   <p>
-    This documentation explains how to build Hermes, a resume agent that generates tailored resumes from personal knowledge, including work experience, projects, and open-source contributions.
+    This documentation explains how to use the Hermes agentic framework to build a resume agent that generates tailored resumes from personal knowledge, including work experience, projects, and open-source contributions.
   </p>
 
   <p>
@@ -23,42 +23,81 @@ slug: /getting-started/introduction
   </p>
 
   <p>
-    Hermes uses multiple skills to run the resume pipeline. The main coordination layer is the <code>resume-pipeline-orchestrator</code>, which manages the full pipeline and produces the final resume outputs.
+    This resume system uses multiple Hermes skills to run the pipeline. The main coordination layer is the <code>resume-pipeline-orchestrator</code>, which manages the full pipeline and produces the final resume outputs.
   </p>
 
   <p>
-    The goal of these docs is to show how this system can be built, deployed on private infrastructure, and adapted to different workflows.
+    The goal of these docs is to show how a Hermes-based resume system can be built, deployed on private infrastructure, and adapted to different workflows.
   </p>
 </div>
 
-## Workflow
+## Why Hermes
 
-- Build resumes from real candidate knowledge instead of generic prompting
-- Scrape new jobs automatically through a scraper agent
-- Run the resume pipeline against each scraped job description
-- Generate tailored resumes and push them to a dashboard
-- Use reusable skills and an orchestrator to manage the full system
+The main reason for using Hermes here is its self-learning loop. Over time, the resume agent can use feedback from generated resumes to improve how it writes, what it emphasizes, and how well it aligns with stronger ATS outcomes. That makes Hermes a good fit for a system that is meant to improve over the long run rather than produce one-off outputs.
+
+Hermes is also useful because it follows instructions well. In this resume workflow, that matters because the agent should stay grounded in real candidate information and avoid fabricating experience, achievements, or skills that are not actually supported by the source material.
+
+## How it works
+
+You can run this resume system in two ways, depending on how automated you want the workflow to be.
+
+- Set up a cron job to run the pipeline on a schedule, such as every morning after new job descriptions have been collected.
+- Run the pipeline manually whenever you want to process a job description batch on demand.
+
+In both cases, the flow stays the same: the system reads candidate knowledge, takes scraped or provided job descriptions, runs the resume pipeline through the orchestrator, generates tailored resumes, and pushes the results to the dashboard.
 
 <div className="flowBlock">
 
 ```mermaid
 flowchart LR
-  A[Personal knowledge<br/>work experience projects OSS] --> B[Skills and evidence pool]
-  C[Morning scraper agent] --> D[Scraped job descriptions]
-  B --> E[resume-pipeline-orchestrator]
-  D --> E
-  E --> F[Resume pipeline]
-  F --> G[Tailored resume]
-  G --> H[Dashboard]
+  classDef source fill:#f8fafc,stroke:#94a3b8,color:#0f172a,stroke-width:1px;
+  classDef trigger fill:#ecfeff,stroke:#0891b2,color:#164e63,stroke-width:1px;
+  classDef orchestrator fill:#ccfbf1,stroke:#0f766e,color:#134e4a,stroke-width:2px;
+  classDef output fill:#fff7ed,stroke:#ea580c,color:#9a3412,stroke-width:1px;
+
+  subgraph Inputs[Context and inputs]
+    A[Candidate knowledge<br/>experience, projects, OSS]
+    B[Job descriptions<br/>scraped or provided manually]
+  end
+
+  subgraph Triggers[Run modes]
+    C[Cron job]
+    D[Manual run]
+  end
+
+  subgraph Pipeline[Resume execution]
+    E[Skills and evidence pool]
+    F[resume-pipeline-orchestrator]
+    G[Tailored resume pipeline]
+  end
+
+  subgraph Outputs[Results]
+    H[Tailored resumes]
+    I[Dashboard push]
+  end
+
+  A --> E
+  B --> F
+  C --> F
+  D --> F
+  E --> F
+  F --> G
+  G --> H
+  H --> I
+
+  class A,B source;
+  class C,D trigger;
+  class E,F,G orchestrator;
+  class H,I output;
 ```
 
 </div>
 
 ## Skills
 
-Hermes is built from multiple skills, each responsible for a specific part of the workflow. The orchestrator connects those skills and manages the end-to-end pipeline.
+This resume system uses a small set of focused skills to move a job description through the pipeline. Each skill handles one part of the flow, and the orchestrator ties them together so the run can happen consistently whether it is scheduled or manual.
 
-Important parts of the system include:
+Core skills in this setup include:
 
 - scraper-related skills for collecting jobs
 - API-related skills for dashboard and backend integration
@@ -110,7 +149,3 @@ Choose the route that matches what you want to do next.
     <p>View the bigger Hermes loop: scraper, dashboard, pipeline, and feedback.</p>
   </a>
 </div>
-
-## Customization
-
-This repository documents how the Hermes system is structured so it can be reproduced and adapted to other stacks.

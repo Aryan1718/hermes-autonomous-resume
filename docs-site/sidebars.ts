@@ -8,7 +8,29 @@ const sidebars: SidebarsConfig = {
       items: [
         'getting-started/introduction',
         'getting-started/installation',
-        'getting-started/first-run',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Scraper Agent',
+      items: [
+        'scraper-agent/overview',
+        'scraper-agent/setup-guide',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Resume Agent',
+      items: [
+        'resume-agent/overview',
+        'resume-agent/setup-guide',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'API Reference',
+      items: [
+        'api-reference/backend-endpoints',
       ],
     },
     {

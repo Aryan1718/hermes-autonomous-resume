@@ -199,7 +199,7 @@ html[data-theme='dark'] .menu__link--active {
 }
 
 .theme-doc-markdown {
-  max-width: 820px;
+  max-width: 980px;
 }
 
 .theme-doc-markdown > h1 {
@@ -277,6 +277,11 @@ html[data-theme='dark'] .pagination-nav__link {
   background: rgba(15, 23, 42, 0.52);
 }
 
+.theme-doc-footer-edit-meta-row,
+.pagination-nav {
+  display: none;
+}
+
 .docBadge {
   display: inline-flex;
   align-items: center;
@@ -298,11 +303,14 @@ html[data-theme='dark'] .pagination-nav__link {
 }
 
 .docIntro {
-  max-width: 72ch;
+  max-width: 1100px;
+  margin: 1.5rem 0 2rem;
 }
 
 .docIntro p {
   margin: 0 0 1.5rem;
+  line-height: 1.8;
+  text-wrap: pretty;
 }
 
 .docIntro p:last-child {

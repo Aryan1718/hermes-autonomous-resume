@@ -36,7 +36,6 @@ const config: Config = {
           path: 'docs',
           routeBasePath: 'docs',
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/your-org/hermes-autonomous-resume/tree/main/docs-site/',
         },
         blog: false,
         pages: {},
