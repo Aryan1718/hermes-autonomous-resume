@@ -9,33 +9,38 @@ slug: /pipeline/orchestrator
 
 `resume-pipeline-orchestrator` is the execution layer that ties the skills together for live JD processing.
 
+For the full operator path, see [Resume Agent > Run and Verify](/docs/resume-agent/run-and-verify). This page stays focused on the orchestrator's role inside the broader pipeline.
+
 ## Responsibilities
 
 - fetch unprocessed job descriptions from the dashboard
 - load `candidate-profile`
-- run `jd-prefilter`
-- run the deeper pipeline for passing JDs
-- save and push final resumes
-- mark successful JDs as processed
-- log failures and skipped items
+- skip JDs that are disqualified, fail the binary gate, or score below `40`
+- run `jd-extraction`, `project-selection`, `point-repointing`, and `latex-assembly` sequentially for JDs scoring `40+`
+- save the generated `.tex` locally
+- run the mandatory self-review gate before any push
+- push successful resumes, PATCH `/use`, and log outcomes
 
 ## Control flow
 
 ```mermaid
 flowchart TD
   A[Fetch JD batch] --> B[jd-prefilter]
-  B -->|Skip| C[Log skipped JD]
-  B -->|Pass| D[jd-extraction]
+  B -->|Disqualified / failed binary / score < 40| C[Log skipped JD]
+  B -->|Score >= 40| D[jd-extraction]
   D --> E[project-selection]
   E --> F[point-repointing]
   F --> G[latex-assembly]
   G --> H[Save .tex]
   H --> I[Self-review]
   I -->|Pass| J[Push resume]
-  J --> K[Mark JD processed]
-  I -->|Fail| L[Fix or skip]
+  J --> K[PATCH /use]
+  K --> L[Log success]
+  I -->|Fail| M[Fix or skip, then log]
 ```
 
 ## Important rule
 
 The orchestrator should consume candidate-specific truth from `candidate-profile`. It should not introduce its own hidden assumptions about location, sponsorship, seniority, or role fit.
+
+Manual one-off debugging can invoke individual skills directly, but normal JD processing should start with `resume-pipeline-orchestrator` only.

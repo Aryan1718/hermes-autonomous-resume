@@ -9,6 +9,8 @@ slug: /setup/dashboard-integration
 
 In the full Hermes loop, the dashboard is the coordination layer between job ingestion, resume generation, status tracking, and feedback.
 
+This page is supporting reference material. For the end-to-end operator flow, start with [Resume Agent > Setup Guide](/docs/resume-agent/setup-guide) and come here when you need the dashboard-specific setup details.
+
 ## What the orchestrator expects
 
 The orchestrator-side instructions reference runtime placeholders such as:
@@ -33,3 +35,5 @@ Those values should be filled only when the user wants this repository personali
 ## Separation of concerns
 
 This repository documents how the pipeline interacts with the dashboard, but the scraper and dashboard application are separate systems. Keep that boundary clear in your docs and setup instructions.
+
+For endpoint details, use [API Reference](/docs/api-reference).

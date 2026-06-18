@@ -39,4 +39,4 @@ This makes the scraper agent the ingestion layer for the whole system. Its job i
 
 To make this work in your own setup, you will need backend endpoints for storing scraped jobs, marking job state, and serving unused jobs back to the resume agent. Those backend contracts are documented in the API reference:
 
-- [Backend Endpoints](/docs/api-reference/backend-endpoints)
+- [API Reference Overview](/docs/api-reference)

@@ -23,7 +23,7 @@ slug: /getting-started/introduction
   </p>
 
   <p>
-    This resume system uses multiple Hermes skills to run the pipeline. The main coordination layer is the <code>resume-pipeline-orchestrator</code>, which manages the full pipeline and produces the final resume outputs.
+    This resume system uses multiple Hermes skills internally, but the operator workflow is simpler than that. Users set up the candidate with <code>profile-bootstrap</code>, add evidence with <code>pool-intake</code>, and then run <code>resume-pipeline-orchestrator</code> manually or on a cron schedule.
   </p>
 
   <p>
@@ -45,6 +45,8 @@ You can run this resume system in two ways, depending on how automated you want 
 - Run the pipeline manually whenever you want to process a job description batch on demand.
 
 In both cases, the flow stays the same: the system reads candidate knowledge, takes scraped or provided job descriptions, runs the resume pipeline through the orchestrator, generates tailored resumes, and pushes the results to the dashboard.
+
+The important usability rule is: users do not normally invoke every downstream resume skill one by one. The orchestrator handles that internal sequence.
 
 <div className="flowBlock">
 
@@ -128,17 +130,17 @@ Choose the route that matches what you want to do next.
     <h3>Installation</h3>
     <p>Install the docs site locally and understand the runtime prerequisites for the pipeline.</p>
   </a>
-  <a className="docCardLink" href="/docs/setup/candidate-setup">
-    <h3>Candidate Setup</h3>
-    <p>Use <code>profile-bootstrap</code> to configure Hermes for a real candidate.</p>
+  <a className="docCardLink" href="/docs/resume-agent/setup-guide">
+    <h3>Resume Agent Setup</h3>
+    <p>Follow the main onboarding path for profile setup, pool prep, and run readiness.</p>
   </a>
-  <a className="docCardLink" href="/docs/setup/pool-intake">
-    <h3>Pool Intake</h3>
-    <p>Load work history, projects, and OSS evidence so the pipeline has something real to work from.</p>
+  <a className="docCardLink" href="/docs/resume-agent/pool-content-guide">
+    <h3>Pool Content Guide</h3>
+    <p>Load work history, projects, and OSS evidence in the structure the pipeline expects.</p>
   </a>
-  <a className="docCardLink" href="/docs/pipeline/overview">
-    <h3>Pipeline Overview</h3>
-    <p>See how JDs move through filtering, extraction, selection, repointing, assembly, and push.</p>
+  <a className="docCardLink" href="/docs/resume-agent/how-it-works">
+    <h3>How It Works</h3>
+    <p>See the end-to-end flow from candidate profile and pool content to dashboard push.</p>
   </a>
   <a className="docCardLink" href="/docs/pipeline/orchestrator">
     <h3>Orchestrator</h3>

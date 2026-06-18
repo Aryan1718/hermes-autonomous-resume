@@ -1,12 +1,104 @@
 ---
 id: setup-guide
 title: Setup Guide
-sidebar_position: 2
+sidebar_position: 3
 slug: /resume-agent/setup-guide
 ---
 
 # Resume Agent Setup Guide
 
-This section is for the resume-agent-specific setup steps.
+Use this page for first-time setup before any JD processing. The goal is to leave the repository in a state where `resume-pipeline-orchestrator` can run without inventing candidate facts or failing on missing runtime config.
 
-Use this guide to configure the Hermes profile that will run candidate-context handling, job-description processing, orchestration, and tailored resume generation.
+## Quick start
+
+If you only want the shortest correct path:
+
+1. Run `profile-bootstrap`.
+2. Make sure `candidate-profile/SKILL.md` now contains the real candidate.
+3. Confirm the runtime placeholders are correct.
+4. Set up dashboard auth.
+5. Start adding evidence files through `pool-intake`.
+
+Do not start by running the downstream resume skills manually.
+
+## Step 1: Prepare the resume profile and runtime placeholders
+
+Set up the Hermes profile that will own resume generation. Keep the resume workflow isolated from scraping so the profile-specific prompts, pool files, and runtime values stay clean.
+
+Required placeholders to understand before going further:
+
+- `<PROFILE_SLUG>`
+- `<POOL_DIR>`
+- `<RESUMES_DIR>`
+- `<DASHBOARD_BASE_URL>`
+- `<DASHBOARD_API_KEY_ENV>`
+
+These resolve to the documented runtime roots:
+
+- Pool root: `/opt/data/profiles/<PROFILE_SLUG>/workspace/<POOL_DIR>/`
+- Resume output root: `/opt/data/profiles/<PROFILE_SLUG>/home/<RESUMES_DIR>/`
+
+If you want the repo personalized in one pass, start with `profile-bootstrap`. This is the correct first action for a new candidate. Supporting detail: [Setup > Candidate Setup](/docs/setup/candidate-setup).
+
+## Step 2: Fill `candidate-profile`
+
+This must happen before JD processing.
+
+`candidate-profile` is the only place candidate-specific filtering and scoring assumptions should live. `jd-prefilter`, `jd-extraction`, and `point-repointing` all depend on it. If it still contains placeholders or another person's facts, the rest of the pipeline becomes unreliable immediately.
+
+Recommended path:
+
+1. Run `profile-bootstrap`.
+2. Rewrite `candidate-profile/SKILL.md` with the current candidate's real facts.
+3. Re-scan the file for unresolved placeholders and stale candidate content.
+
+This is the main setup action the user performs directly. Everything else in the resume pipeline depends on this file being right.
+
+## Step 3: Connect dashboard auth and API requirements
+
+Before the orchestrator can fetch JDs or push resumes, the dashboard side must be reachable and authenticated.
+
+You need:
+
+- a real `<DASHBOARD_BASE_URL>`
+- an API key stored under the environment variable named by `<DASHBOARD_API_KEY_ENV>`
+- the queue, resume output, and workflow logging endpoints described in [API Reference](/docs/api-reference)
+
+Most important orchestrator-facing endpoints:
+
+- `GET /api/job-descriptions/next`
+- `POST /api/generated-resumes`
+- `PATCH /api/job-descriptions/:id/use`
+- `POST /api/workflow-logs`
+
+Supporting detail: [Setup > Dashboard Integration](/docs/setup/dashboard-integration).
+
+## Step 4: Confirm output and pool locations
+
+Verify that the intended directories are the ones the docs and skills expect:
+
+- pool content under `/opt/data/profiles/<PROFILE_SLUG>/workspace/<POOL_DIR>/`
+- final resumes under `/opt/data/profiles/<PROFILE_SLUG>/home/<RESUMES_DIR>/`
+- dashboard API key in `/opt/data/profiles/<PROFILE_SLUG>/.env`
+
+At this point, "ready to run" means:
+
+- the profile is real
+- the pool path exists
+- the resumes output path is known
+- dashboard auth is available
+- the evidence pool contains real candidate content
+
+Important: being "ready to run" does not mean "run individual resume skills by hand." It means the repository is ready for evidence intake and then for `resume-pipeline-orchestrator`.
+
+## Readiness checklist
+
+- `candidate-profile` contains real candidate facts and no required placeholders.
+- Pool root and resume output root are defined using the documented placeholders.
+- Dashboard API configuration is in place and matches the [API Reference](/docs/api-reference).
+- At least one work-experience entry exists in the pool.
+- Personal projects and/or OSS contributions have been onboarded where available.
+- You understand that `resume-pipeline-orchestrator` is the normal execution path once setup is complete.
+- You understand that `profile-bootstrap` and `pool-intake` are the main user-invoked setup skills before orchestration.
+
+Next: [Pool Content Guide](/docs/resume-agent/pool-content-guide).

@@ -1,6 +1,6 @@
 ---
 name: jd-prefilter
-description: Runs when a batch of JDs arrives. Filters out irrelevant JDs using the current candidate-profile, scores survivors, and selects the top 3-5 for the full pipeline. Use this before running any other resume pipeline step.
+description: Runs when a batch of JDs arrives. Filters out irrelevant JDs using the current candidate-profile, scores survivors, and decides which JDs should continue to the full pipeline. Use this before running any other resume pipeline step.
 version: 2.0.0
 metadata:
   hermes:
@@ -14,7 +14,7 @@ metadata:
 
 # JD Pre-Filter and Scoring Guide
 
-> **Purpose:** Fast gate on raw JD text + Candidate Profile. Disqualifies irrelevant JDs, scores survivors, ranks them, and hands the top 3-5 to the full pipeline. Writes nothing to any file.
+> **Purpose:** Fast gate on raw JD text + Candidate Profile. Disqualifies irrelevant JDs, scores survivors, ranks them for operator visibility, and decides which JDs continue to the full pipeline. Writes nothing to any file.
 
 **Speed is the point.** Process all JDs in one pass. Read each JD once, run four phases, move on. Deep analysis happens in the full pipeline, not here.
 
@@ -138,20 +138,22 @@ Count how many `Preferred Signals` from `candidate-profile` appear in the JD. Ea
 
 ---
 
-## Phase 4: Rank and Select
+## Phase 4: Rank and Handoff
 
-Sort by total score, highest first. Select top 3-5:
+Sort by total score, highest first. In the current orchestrator contract, ranking is informational and the handoff rule is threshold-based:
 
-| Top score | How many to take |
+| Outcome | Decision |
 |---|---|
-| >= 75 | Top 5 |
-| 60-74 | Top 4 |
-| < 60 | Top 3 |
-| Fewer than 3 above 40 | Take only those above 40 |
+| Disqualified in Phase 1 | `SKIPPED` |
+| Failed any Phase 2 binary gate | `SKIPPED` |
+| Score < 40 | `SKIPPED` |
+| Score >= 40 | `RUN FULL PIPELINE` |
 
 **Tie-breaking:** Higher Career Direction Fit -> Higher Strongest Signal Match -> Higher Provable Coverage -> More Preferred Signals.
 
-**Never run the full pipeline on a disqualified or failed-binary JD.**
+**Never run the full pipeline on a disqualified, failed-binary, or sub-40 JD.**
+
+**Operational note:** The orchestrator processes JDs sequentially, one at a time. This skill still produces ranks across surviving JDs, but those ranks do not currently limit downstream execution to a top `3-5` subset.
 
 ---
 
@@ -163,7 +165,7 @@ Sort by total score, highest first. Select top 3-5:
    - Phase 1: Hard disqualification. Stop if disqualified and log the reason.
    - Phase 2: Binary pass check. Stop if failed and log which question failed.
    - Phase 3: Score on four dimensions. Record all sub-scores with evidence.
-4. Phase 4: Rank all survivors and select the top 3-5.
+4. Phase 4: Rank all survivors and mark each JD as `RUN FULL PIPELINE` when score >= 40, otherwise `SKIPPED`.
 5. Disqualification reasons must be specific and trace to exact JD language.
 6. Every score must trace to a specific section of `candidate-profile`.
 
@@ -184,11 +186,11 @@ Use the YAML output format from the pipeline.
 3. **Counting `Provable with Framing` toward the Phase 2 threshold.** Only `Always Provable` counts.
 4. **Treating preferred experience as a hard seniority disqualifier.** Only explicit required minimums that exceed the profile-supported range should fire.
 5. **Scoring on impression instead of the profile.** Every score traces to a specific `candidate-profile` section.
-6. **Running the full pipeline on more than 5 JDs per batch.** Raise the quality threshold instead.
+6. **Running the full pipeline on disqualified, failed-binary, or sub-40 JDs.** The current handoff rule is threshold-based, not intuition-based.
 7. **Updating `candidate-profile` mid-run.** Observations go in `profile_notes`. Candidate updates happen explicitly.
 8. **Skipping the evidence field in the output.** Scores without evidence cannot be audited.
 9. **Processing phases out of order.** Phase 1 -> Phase 2 -> Phase 3 -> Phase 4. Always.
-10. **Selecting fewer than 3 just because scores are low.** If 3+ scored above 40, run the pipeline on them.
+10. **Treating rank as the current execution gate.** Rank is useful for visibility, but the orchestrator currently hands off by threshold: `score >= 40`.
 11. **Trying to infer the candidate from the JD.** All candidate assumptions come from `candidate-profile`, not from guesswork.
 
 ---

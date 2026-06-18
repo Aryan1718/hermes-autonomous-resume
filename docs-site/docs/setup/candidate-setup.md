@@ -9,6 +9,8 @@ slug: /setup/candidate-setup
 
 Candidate setup starts with `profile-bootstrap`.
 
+If you are following the main resume workflow, treat [Resume Agent > Setup Guide](/docs/resume-agent/setup-guide) as the primary onboarding path and use this page as supporting detail for the candidate-specific portion.
+
 This skill exists to prevent users from hand-editing scattered placeholders across the repository. It asks for the minimum inputs the pipeline needs, then writes the candidate-dependent source of truth in one pass.
 
 ## What profile-bootstrap should collect
@@ -44,3 +46,8 @@ That means:
 ## Setup rule
 
 Do not let multiple skills invent candidate facts independently. Candidate facts should be entered once and then consumed by the rest of the system.
+
+Continue in the main flow:
+
+- [Resume Agent > Setup Guide](/docs/resume-agent/setup-guide)
+- [Resume Agent > Run and Verify](/docs/resume-agent/run-and-verify)

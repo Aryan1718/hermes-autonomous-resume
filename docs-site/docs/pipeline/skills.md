@@ -7,20 +7,24 @@ slug: /pipeline/skills
 
 # Skill map
 
+For step-by-step operational usage, use [Resume Agent > Skill Workflow](/docs/resume-agent/skill-workflow). This page remains the compact map.
+
 | Skill | Role in system |
 |---|---|
-| `profile-bootstrap` | Onboards a real candidate and optionally fills runtime placeholders. |
-| `candidate-profile` | Candidate-specific source of truth. |
-| `pool-intake` | Adds new raw evidence into the pool. |
-| `pool-versioning` | Defines pool structure and write boundaries. |
-| `jd-prefilter` | Filters and scores incoming JDs. |
-| `jd-extraction` | Extracts structured signals from a JD. |
-| `project-selection` | Chooses the best supporting projects and OSS items. |
-| `point-repointing` | Re-aims bullets toward the JD. |
+| `profile-bootstrap` | Setup skill for candidate onboarding and runtime placeholders. |
+| `candidate-profile` | Setup artifact and source of truth for candidate-specific decisions. |
+| `pool-intake` | Setup skill for adding raw evidence into the pool. |
+| `pool-versioning` | Setup contract for pool structure and write boundaries. |
+| `resume-pipeline-orchestrator` | Normal runtime entry point for JD processing. |
+| `jd-prefilter` | Runtime gate that filters, scores, and skips or passes JDs. |
+| `jd-extraction` | Runtime stage that extracts structured JD signals. |
+| `project-selection` | Runtime stage that selects projects and OSS evidence only. |
+| `point-repointing` | Runtime stage that tailors selected projects plus all work experience. |
 | `point-creation` | Reference method for high-quality bullet writing. |
-| `latex-assembly` | Produces the final LaTeX resume. |
-| `resume-pipeline-orchestrator` | Runs the end-to-end pipeline and pushes results. |
+| `latex-assembly` | Runtime stage that assembles the final LaTeX resume. |
 
 ## Design rule
 
 The skills are intentionally composable. You should be able to understand or improve one stage without rewriting the whole pipeline at once.
+
+Normal usage is: run `resume-pipeline-orchestrator`, not each downstream runtime skill by hand. Individual stages are mainly for debugging or internal iteration.

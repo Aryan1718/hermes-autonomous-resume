@@ -38,9 +38,11 @@ Detailed behavioral rules for each phase of the pre-filter step.
 
 ## Phase 4 Rules
 
-- Sort all scored JDs by total score, highest first. Select the top 3-5 for the full pipeline.
-- If the top score is >= 75: take top 5. If 60-74: take top 4. If < 60: take top 3 only.
-- If fewer than 3 JDs scored above 40: flag the batch as low-quality and take only those above 40.
+- Sort all scored JDs by total score, highest first. Keep the ranking for visibility and auditability.
+- Handoff is threshold-based in the current orchestrator contract:
+  - `score >= 40` -> `RUN FULL PIPELINE`
+  - `score < 40` -> `SKIPPED`
+- Disqualified and failed-binary JDs are always `SKIPPED` regardless of numeric score.
 - Tie-breaking: Higher Career Direction Fit -> Higher Strongest Signal Match -> Higher Provable Coverage -> More Preferred Signals.
 - Never call the downstream pipeline for a skipped JD. It stays unprocessed so it can be re-evaluated after a profile update.
 

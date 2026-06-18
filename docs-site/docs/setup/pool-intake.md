@@ -9,6 +9,8 @@ slug: /setup/pool-intake
 
 The pool is the evidence base Hermes uses to tailor resumes honestly.
 
+For the full operator walkthrough, use [Resume Agent > Pool Content Guide](/docs/resume-agent/pool-content-guide). This page stays brief on purpose and acts as the shared reference entry point.
+
 ## What goes into the pool
 
 - work experience
@@ -26,6 +28,13 @@ Use:
 - `pool-intake` to add new items
 - `pool-versioning` to understand the structure and write boundaries
 
+The standard intake result is:
+
+- `raw.md` copied or transformed into the pool item folder
+- `idx.md` initialized with `current_version: 0`
+- empty `versions/`
+- `masters.md` updated for `personal_project` and `oss_contribution`
+
 ## Quality bar
 
 The pool should contain enough detail that the system can answer:
@@ -36,3 +45,8 @@ The pool should contain enough detail that the system can answer:
 - what results or outputs are provable
 
 If that evidence is absent, the pipeline should stay conservative rather than inventing claims.
+
+Next reading:
+
+- [Resume Agent > Pool Content Guide](/docs/resume-agent/pool-content-guide)
+- [Resume Agent > Skill Workflow](/docs/resume-agent/skill-workflow)

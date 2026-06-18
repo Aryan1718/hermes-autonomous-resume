@@ -23,14 +23,24 @@ const sidebars: SidebarsConfig = {
       label: 'Resume Agent',
       items: [
         'resume-agent/overview',
+        'resume-agent/how-it-works',
         'resume-agent/setup-guide',
+        'resume-agent/pool-content-guide',
+        'resume-agent/skill-workflow',
+        'resume-agent/run-and-verify',
       ],
     },
     {
       type: 'category',
       label: 'API Reference',
       items: [
-        'api-reference/backend-endpoints',
+        'api-reference/overview',
+        'api-reference/job-description-apis',
+        'api-reference/resume-output-apis',
+        'api-reference/workflow-logging-apis',
+        'api-reference/feedback-apis',
+        'api-reference/hermes-integration-apis',
+        'api-reference/authentication-apis',
       ],
     },
     {
