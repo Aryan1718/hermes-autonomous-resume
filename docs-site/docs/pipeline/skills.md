@@ -7,6 +7,10 @@ slug: /pipeline/skills
 
 # Skill map
 
+If you want to inspect the actual skill contracts listed on this page, use the public source repository:
+
+- [hermes-autonomous-resume on GitHub](https://github.com/Aryan1718/hermes-autonomous-resume)
+
 For step-by-step operational usage, use [Resume Agent > Skill Workflow](/docs/resume-agent/skill-workflow). This page remains the compact map.
 
 | Skill | Role in system |

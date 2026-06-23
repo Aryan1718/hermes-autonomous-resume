@@ -9,6 +9,10 @@ slug: /setup/pool-intake
 
 The pool is the evidence base Hermes uses to tailor resumes honestly.
 
+If you want the actual pool-related skill files and file contracts referenced on this page, use the public source repository:
+
+- [hermes-autonomous-resume on GitHub](https://github.com/Aryan1718/hermes-autonomous-resume)
+
 For the full operator walkthrough, use [Resume Agent > Pool Content Guide](/docs/resume-agent/pool-content-guide). This page stays brief on purpose and acts as the shared reference entry point.
 
 ## What goes into the pool

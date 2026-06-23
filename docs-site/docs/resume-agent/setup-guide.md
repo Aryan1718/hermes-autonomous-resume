@@ -9,6 +9,10 @@ slug: /resume-agent/setup-guide
 
 Use this page for first-time setup before any JD processing. The goal is to leave the repository in a state where `resume-pipeline-orchestrator` can run without inventing candidate facts or failing on missing runtime config.
 
+If you want the actual files behind names like `candidate-profile/SKILL.md` and the referenced skills, use the public source repository:
+
+- [hermes-autonomous-resume on GitHub](https://github.com/Aryan1718/hermes-autonomous-resume)
+
 ## Quick start
 
 If you only want the shortest correct path:

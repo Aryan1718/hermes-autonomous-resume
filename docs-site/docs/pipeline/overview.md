@@ -9,6 +9,10 @@ slug: /pipeline/overview
 
 The Hermes resume pipeline is a staged process that narrows, enriches, and tailors information rather than trying to produce a final resume in one jump.
 
+If you want the actual skill files referenced in this section, use the public source repository:
+
+- [hermes-autonomous-resume on GitHub](https://github.com/Aryan1718/hermes-autonomous-resume)
+
 For the operator-facing walkthrough, use [Resume Agent](/docs/resume-agent/overview). This page is the compact internal pipeline reference.
 
 ```mermaid

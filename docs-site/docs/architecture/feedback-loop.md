@@ -9,6 +9,10 @@ slug: /architecture/feedback-loop
 
 Hermes is not just a one-shot resume generator. The point of the larger system is that outputs feed back into better future runs.
 
+If you want the actual profile, pipeline, and skill assets referenced on this page, use the public source repository:
+
+- [hermes-autonomous-resume on GitHub](https://github.com/Aryan1718/hermes-autonomous-resume)
+
 ## Feedback sources
 
 - accept or reject decisions on generated resumes

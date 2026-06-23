@@ -9,6 +9,10 @@ slug: /pipeline/orchestrator
 
 `resume-pipeline-orchestrator` is the execution layer that ties the skills together for live JD processing.
 
+If you want the actual orchestrator and downstream skill files referenced here, use the public source repository:
+
+- [hermes-autonomous-resume on GitHub](https://github.com/Aryan1718/hermes-autonomous-resume)
+
 For the full operator path, see [Resume Agent > Run and Verify](/docs/resume-agent/run-and-verify). This page stays focused on the orchestrator's role inside the broader pipeline.
 
 ## Responsibilities

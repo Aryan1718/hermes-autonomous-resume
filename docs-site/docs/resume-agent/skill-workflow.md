@@ -9,6 +9,10 @@ slug: /resume-agent/skill-workflow
 
 This page is the step-by-step contract map for the skills that make up the resume agent.
 
+If you want to inspect the actual skill contracts described here, use the public source repository:
+
+- [hermes-autonomous-resume on GitHub](https://github.com/Aryan1718/hermes-autonomous-resume)
+
 ## `candidate-profile`
 
 **Purpose:** Candidate-specific source of truth for role scope, disqualifiers, provable skills, strongest signals, and career direction.

@@ -9,6 +9,10 @@ slug: /getting-started/first-run
 
 Before running the orchestrator for the first time, make sure the repository is configured for a real candidate rather than left in template mode.
 
+If you want to inspect the actual skill files named on this page, use the public source repository:
+
+- [hermes-autonomous-resume on GitHub](https://github.com/Aryan1718/hermes-autonomous-resume)
+
 ## Required steps
 
 1. Run `profile-bootstrap`.

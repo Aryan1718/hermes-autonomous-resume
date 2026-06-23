@@ -9,6 +9,10 @@ slug: /getting-started/introduction
 
 <div className="docBadge">Getting Started</div>
 
+If you want the actual repository files and skill contracts referenced throughout these docs, use the public source repository:
+
+- [hermes-autonomous-resume on GitHub](https://github.com/Aryan1718/hermes-autonomous-resume)
+
 <div className="docIntro">
   <p>
     This documentation explains how to use the Hermes agentic framework to build a resume agent that generates tailored resumes from personal knowledge, including work experience, projects, and open-source contributions.
@@ -101,7 +105,8 @@ This resume system uses a small set of focused skills to move a job description 
 
 Core skills in this setup include:
 
-- scraper-related skills for collecting jobs
+- a scraper-profile skill that can invoke `scraper/jobright.py` for prompts like `scrape 20 jobs`
+- scraper utilities such as `scraper/jobright.py` and `scraper/tiny_fish_job_description.py`
 - API-related skills for dashboard and backend integration
 - candidate and evidence skills for storing personal knowledge
 - resume-generation skills for processing job descriptions and creating tailored resumes

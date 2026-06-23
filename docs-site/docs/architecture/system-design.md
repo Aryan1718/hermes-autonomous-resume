@@ -9,6 +9,10 @@ slug: /architecture/system-design
 
 Hermes is easiest to understand as a loop of four systems:
 
+If you want the actual skills, scraper files, and repository pieces behind this diagram, use the public source repository:
+
+- [hermes-autonomous-resume on GitHub](https://github.com/Aryan1718/hermes-autonomous-resume)
+
 1. job intake
 2. candidate-aware filtering and tailoring
 3. dashboard delivery

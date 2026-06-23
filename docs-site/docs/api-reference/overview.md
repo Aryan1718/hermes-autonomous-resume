@@ -9,6 +9,10 @@ slug: /api-reference
 
 The Hermes dashboard API is the handoff point between three different actors:
 
+If you want the actual skills and repository workflows that consume these endpoints, use the public source repository:
+
+- [hermes-autonomous-resume on GitHub](https://github.com/Aryan1718/hermes-autonomous-resume)
+
 - browser clients used by the dashboard frontend
 - Hermes agents that fetch work, save outputs, and review feedback
 - scraper services that ingest new job descriptions

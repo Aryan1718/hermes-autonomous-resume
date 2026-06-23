@@ -9,6 +9,10 @@ slug: /resume-agent/overview
 
 The Resume Agent section is the main operator handbook for this repository. Read it top to bottom if you want to configure a candidate, build the evidence pool, run the orchestrator, and verify the output without stitching the workflow together from scattered reference pages.
 
+If you want the actual skills and repository files referenced in this section, use the public source repository:
+
+- [hermes-autonomous-resume on GitHub](https://github.com/Aryan1718/hermes-autonomous-resume)
+
 ## The actual user flow
 
 Most users only need to understand three actions:

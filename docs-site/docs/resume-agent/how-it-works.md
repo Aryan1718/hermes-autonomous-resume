@@ -9,6 +9,10 @@ slug: /resume-agent/how-it-works
 
 The resume agent is a staged workflow, not one long prompt. It reads candidate truth from `candidate-profile`, pulls evidence from the pool, processes one JD at a time, and writes only at the stages that are supposed to persist state.
 
+If you want the actual skills and file contracts behind this flow, use the public source repository:
+
+- [hermes-autonomous-resume on GitHub](https://github.com/Aryan1718/hermes-autonomous-resume)
+
 For live runs, treat `resume-pipeline-orchestrator` as the operational source of truth for control flow. In the current repo contract, JDs are fetched in a batch, then processed sequentially; JDs that are disqualified, fail the binary gate, or score below `40` are skipped, and JDs at `40+` continue downstream one at a time.
 
 ## End-to-end flow

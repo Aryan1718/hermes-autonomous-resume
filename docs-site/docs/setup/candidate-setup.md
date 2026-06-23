@@ -9,6 +9,10 @@ slug: /setup/candidate-setup
 
 Candidate setup starts with `profile-bootstrap`.
 
+If you want the actual setup skill files referenced on this page, use the public source repository:
+
+- [hermes-autonomous-resume on GitHub](https://github.com/Aryan1718/hermes-autonomous-resume)
+
 If you are following the main resume workflow, treat [Resume Agent > Setup Guide](/docs/resume-agent/setup-guide) as the primary onboarding path and use this page as supporting detail for the candidate-specific portion.
 
 This skill exists to prevent users from hand-editing scattered placeholders across the repository. It asks for the minimum inputs the pipeline needs, then writes the candidate-dependent source of truth in one pass.
