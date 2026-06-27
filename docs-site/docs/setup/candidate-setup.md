@@ -5,13 +5,11 @@ sidebar_position: 1
 slug: /setup/candidate-setup
 ---
 
+import SourceRepoNote from '@site/src/components/SourceRepoNote';
+
 # Candidate setup
 
 Candidate setup starts with `profile-bootstrap`.
-
-If you want the actual setup skill files referenced on this page, use the public source repository:
-
-- [hermes-autonomous-resume on GitHub](https://github.com/Aryan1718/hermes-autonomous-resume)
 
 If you are following the main resume workflow, treat [Resume Agent > Setup Guide](/docs/resume-agent/setup-guide) as the primary onboarding path and use this page as supporting detail for the candidate-specific portion.
 
@@ -55,3 +53,7 @@ Continue in the main flow:
 
 - [Resume Agent > Setup Guide](/docs/resume-agent/setup-guide)
 - [Resume Agent > Run and Verify](/docs/resume-agent/run-and-verify)
+
+<SourceRepoNote>
+  If you want the actual setup skill files referenced on this page, use the public source repository.
+</SourceRepoNote>

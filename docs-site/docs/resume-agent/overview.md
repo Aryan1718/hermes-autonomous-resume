@@ -5,13 +5,11 @@ sidebar_position: 1
 slug: /resume-agent/overview
 ---
 
+import SourceRepoNote from '@site/src/components/SourceRepoNote';
+
 # Resume Agent Overview
 
 The Resume Agent section is the main operator handbook for this repository. Read it top to bottom if you want to configure a candidate, build the evidence pool, run the orchestrator, and verify the output without stitching the workflow together from scattered reference pages.
-
-If you want the actual skills and repository files referenced in this section, use the public source repository:
-
-- [hermes-autonomous-resume on GitHub](https://github.com/Aryan1718/hermes-autonomous-resume)
 
 ## The actual user flow
 
@@ -73,3 +71,7 @@ Use this section as the complete Resume Agent handbook:
 - [Skill Workflow](/docs/resume-agent/skill-workflow) for per-skill contracts
 
 Reference pages under `Setup`, `Pipeline`, and `API Reference` still matter, but they are supporting material after this flow is in place.
+
+<SourceRepoNote>
+  If you want the actual skills and repository files referenced in this section, use the public source repository.
+</SourceRepoNote>

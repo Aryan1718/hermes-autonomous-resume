@@ -5,6 +5,8 @@ sidebar_position: 2
 slug: /scraper-agent/setup-guide
 ---
 
+import SourceRepoNote from '@site/src/components/SourceRepoNote';
+
 # Scraper Agent Setup Guide
 
 This section is for scraper-agent-specific setup only.
@@ -33,10 +35,6 @@ The current scraper files are:
 - `scraper/.env.example`
 
 The repository currently gives you the scraper scripts and the env template. The Hermes wrapper skill for prompts like `scrape 20 jobs` should be created inside the dedicated scraper profile.
-
-Source repository:
-
-- [hermes-autonomous-resume on GitHub](https://github.com/Aryan1718/hermes-autonomous-resume)
 
 `jobright.py` is the main batch-ingest scraper. It logs into Jobright, collects jobs, opens each detail page in the same browser session, and posts those jobs to the dashboard ingest endpoint.
 
@@ -145,3 +143,7 @@ For VPS deployment:
 - run the scraper with `--xvfb`
 
 If you are using the reference always-on Hermes VPS setup, this scraper belongs there rather than on a laptop that may go offline.
+
+<SourceRepoNote>
+  If you want the actual scraper files behind this setup guide, use the public source repository.
+</SourceRepoNote>

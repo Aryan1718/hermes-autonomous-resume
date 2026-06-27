@@ -5,13 +5,11 @@ sidebar_position: 1
 slug: /getting-started/introduction
 ---
 
+import SourceRepoNote from '@site/src/components/SourceRepoNote';
+
 # Hermes Resume Agent
 
 <div className="docBadge">Getting Started</div>
-
-If you want the actual repository files and skill contracts referenced throughout these docs, use the public source repository:
-
-- [hermes-autonomous-resume on GitHub](https://github.com/Aryan1718/hermes-autonomous-resume)
 
 <div className="docIntro">
   <p>
@@ -54,50 +52,28 @@ The important usability rule is: users do not normally invoke every downstream r
 
 <div className="flowBlock">
 
+This is the normal operator flow for the resume system.
+
 ```mermaid
 flowchart LR
-  classDef source fill:#f8fafc,stroke:#94a3b8,color:#0f172a,stroke-width:1px;
-  classDef trigger fill:#ecfeff,stroke:#0891b2,color:#164e63,stroke-width:1px;
-  classDef orchestrator fill:#ccfbf1,stroke:#0f766e,color:#134e4a,stroke-width:2px;
+  classDef setup fill:#ecfeff,stroke:#0891b2,color:#164e63,stroke-width:1px;
+  classDef runtime fill:#ccfbf1,stroke:#0f766e,color:#134e4a,stroke-width:1px;
   classDef output fill:#fff7ed,stroke:#ea580c,color:#9a3412,stroke-width:1px;
 
-  subgraph Inputs[Context and inputs]
-    A[Candidate knowledge<br/>experience, projects, OSS]
-    B[Job descriptions<br/>scraped or provided manually]
-  end
+  A[profile-bootstrap<br/>set up candidate]:::setup
+  B[pool-intake<br/>add evidence]:::setup
+  C[resume-pipeline-orchestrator<br/>run pipeline]:::runtime
+  D[Tailored resume]:::output
+  E[Dashboard]:::output
 
-  subgraph Triggers[Run modes]
-    C[Cron job]
-    D[Manual run]
-  end
-
-  subgraph Pipeline[Resume execution]
-    E[Skills and evidence pool]
-    F[resume-pipeline-orchestrator]
-    G[Tailored resume pipeline]
-  end
-
-  subgraph Outputs[Results]
-    H[Tailored resumes]
-    I[Dashboard push]
-  end
-
-  A --> E
-  B --> F
-  C --> F
-  D --> F
-  E --> F
-  F --> G
-  G --> H
-  H --> I
-
-  class A,B source;
-  class C,D trigger;
-  class E,F,G orchestrator;
-  class H,I output;
+  A --> B --> C --> D --> E
 ```
 
 </div>
+
+- Start with `profile-bootstrap`, not downstream resume skills.
+- Add candidate evidence through `pool-intake`.
+- Use `resume-pipeline-orchestrator` as the normal runtime entry point.
 
 ## Skills
 
@@ -156,3 +132,7 @@ Choose the route that matches what you want to do next.
     <p>View the bigger Hermes loop: scraper, dashboard, pipeline, and feedback.</p>
   </a>
 </div>
+
+<SourceRepoNote>
+  If you want the actual repository files and skill contracts referenced throughout these docs, use the public source repository.
+</SourceRepoNote>

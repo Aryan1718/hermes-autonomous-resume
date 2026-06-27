@@ -5,35 +5,41 @@ sidebar_position: 1
 slug: /pipeline/overview
 ---
 
+import SourceRepoNote from '@site/src/components/SourceRepoNote';
+
 # Pipeline overview
 
 The Hermes resume pipeline is a staged process that narrows, enriches, and tailors information rather than trying to produce a final resume in one jump.
 
-If you want the actual skill files referenced in this section, use the public source repository:
-
-- [hermes-autonomous-resume on GitHub](https://github.com/Aryan1718/hermes-autonomous-resume)
-
 For the operator-facing walkthrough, use [Resume Agent](/docs/resume-agent/overview). This page is the compact internal pipeline reference.
+
+This is the internal runtime stage flow from a queued JD to a pushed resume result.
 
 ```mermaid
 flowchart TD
-  O[resume-pipeline-orchestrator] --> A[Fetch unprocessed JDs]
-  P[candidate-profile] --> B[jd-prefilter]
-  A --> B
-  B -->|Disqualified / failed binary / score < 40| C[Skip and log]
-  B -->|Score >= 40| D[jd-extraction]
-  P --> D
-  E[Pool projects + OSS evidence] --> F[project-selection]
-  D --> F
-  P --> F
-  P --> G[point-repointing]
-  D --> G
-  F --> G
-  H[All work experience] --> G
-  G --> I[latex-assembly]
-  I --> J[Self-review gate]
-  J --> K[Push to dashboard]
+  classDef input fill:#f8fafc,stroke:#94a3b8,color:#0f172a,stroke-width:1px;
+  classDef stage fill:#ecfeff,stroke:#0891b2,color:#164e63,stroke-width:1px;
+  classDef output fill:#fff7ed,stroke:#ea580c,color:#9a3412,stroke-width:1px;
+
+  A[Fetch JD]:::stage --> B[jd-prefilter]:::stage
+  B -->|skip| C[Skip + log]:::output
+  B -->|pass| D[jd-extraction]:::stage
+  D --> E[project-selection]:::stage
+  E --> F[point-repointing]:::stage
+  F --> G[latex-assembly]:::stage
+  G --> H[Self-review]:::stage
+  H --> I[Push result]:::output
+
+  J[candidate-profile]:::input --> B
+  J --> D
+  J --> F
+  K[Pool evidence]:::input --> E
+  L[Work experience]:::input --> F
 ```
+
+- `candidate-profile` influences filtering, extraction, and tailoring.
+- Pool evidence feeds project selection.
+- The orchestrator handles the stage sequence.
 
 ## Stage purposes
 
@@ -58,3 +64,7 @@ See also:
 
 - [Resume Agent > Skill Workflow](/docs/resume-agent/skill-workflow)
 - [Resume Agent > Run and Verify](/docs/resume-agent/run-and-verify)
+
+<SourceRepoNote>
+  If you want the actual skill files referenced in this section, use the public source repository.
+</SourceRepoNote>

@@ -381,6 +381,36 @@ html[data-theme='dark'] .flowBlock {
   background: rgba(15, 23, 42, 0.56);
 }
 
+.sourceRepoNote {
+  margin-top: 3rem;
+  padding: 1.15rem 1.25rem;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 20px;
+  background:
+    linear-gradient(135deg, rgba(15, 118, 110, 0.08), rgba(245, 158, 11, 0.08)),
+    rgba(255, 255, 255, 0.8);
+}
+
+.sourceRepoNote p {
+  margin: 0 0 0.6rem;
+  color: #475569;
+}
+
+.sourceRepoNote__link {
+  font-weight: 700;
+}
+
+html[data-theme='dark'] .sourceRepoNote {
+  border-color: rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(135deg, rgba(94, 234, 212, 0.1), rgba(245, 158, 11, 0.08)),
+    rgba(15, 23, 42, 0.62);
+}
+
+html[data-theme='dark'] .sourceRepoNote p {
+  color: #cbd5e1;
+}
+
 @media (max-width: 996px) {
   .docGrid {
     grid-template-columns: 1fr;

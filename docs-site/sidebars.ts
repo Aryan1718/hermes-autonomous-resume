@@ -23,11 +23,11 @@ const sidebars: SidebarsConfig = {
       label: 'Resume Agent',
       items: [
         'resume-agent/overview',
-        'resume-agent/how-it-works',
         'resume-agent/setup-guide',
         'resume-agent/pool-content-guide',
-        'resume-agent/skill-workflow',
         'resume-agent/run-and-verify',
+        'resume-agent/how-it-works',
+        'resume-agent/skill-workflow',
       ],
     },
     {

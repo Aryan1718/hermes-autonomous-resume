@@ -1,17 +1,15 @@
 ---
 id: setup-guide
 title: Setup Guide
-sidebar_position: 3
+sidebar_position: 2
 slug: /resume-agent/setup-guide
 ---
+
+import SourceRepoNote from '@site/src/components/SourceRepoNote';
 
 # Resume Agent Setup Guide
 
 Use this page for first-time setup before any JD processing. The goal is to leave the repository in a state where `resume-pipeline-orchestrator` can run without inventing candidate facts or failing on missing runtime config.
-
-If you want the actual files behind names like `candidate-profile/SKILL.md` and the referenced skills, use the public source repository:
-
-- [hermes-autonomous-resume on GitHub](https://github.com/Aryan1718/hermes-autonomous-resume)
 
 ## Quick start
 
@@ -106,3 +104,7 @@ Important: being "ready to run" does not mean "run individual resume skills by h
 - You understand that `profile-bootstrap` and `pool-intake` are the main user-invoked setup skills before orchestration.
 
 Next: [Pool Content Guide](/docs/resume-agent/pool-content-guide).
+
+<SourceRepoNote>
+  If you want the actual files behind names like `candidate-profile/SKILL.md` and the referenced skills, use the public source repository.
+</SourceRepoNote>

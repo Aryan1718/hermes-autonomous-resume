@@ -1,7 +1,7 @@
 ---
 id: pool-content-guide
 title: Pool Content Guide
-sidebar_position: 4
+sidebar_position: 3
 slug: /resume-agent/pool-content-guide
 ---
 

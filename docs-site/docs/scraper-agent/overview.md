@@ -5,6 +5,8 @@ sidebar_position: 1
 slug: /scraper-agent/overview
 ---
 
+import SourceRepoNote from '@site/src/components/SourceRepoNote';
+
 # Scraper Agent Overview
 
 The scraper agent is responsible for collecting job descriptions and handing them off to the rest of the resume pipeline.
@@ -22,10 +24,6 @@ Both implementations are available in the public repository under `scraper/`:
 
 - `scraper/jobright.py`
 - `scraper/tiny_fish_job_description.py`
-
-Source repository:
-
-- [hermes-autonomous-resume on GitHub](https://github.com/Aryan1718/hermes-autonomous-resume)
 
 You are not limited to these two scrapers. You can also build your own scraper as long as it collects the required job data and pushes it into the backend in the format expected by the rest of the system.
 
@@ -99,3 +97,7 @@ If you want always-on automation, the VPS setup is the right place for the scrap
 To make this work in your own setup, you will need backend endpoints for storing scraped jobs, marking job state, and serving unused jobs back to the resume agent. Those backend contracts are documented in the API reference:
 
 - [API Reference Overview](/docs/api-reference)
+
+<SourceRepoNote>
+  If you want the actual scraper files referenced in this section, use the public source repository.
+</SourceRepoNote>

@@ -1,17 +1,17 @@
 ---
 id: skill-workflow
 title: Skill Workflow
-sidebar_position: 5
+sidebar_position: 6
 slug: /resume-agent/skill-workflow
 ---
+
+import SourceRepoNote from '@site/src/components/SourceRepoNote';
 
 # Skill Workflow
 
 This page is the step-by-step contract map for the skills that make up the resume agent.
 
-If you want to inspect the actual skill contracts described here, use the public source repository:
-
-- [hermes-autonomous-resume on GitHub](https://github.com/Aryan1718/hermes-autonomous-resume)
+Read [Setup Guide](/docs/resume-agent/setup-guide) first if you are onboarding a new candidate. `profile-bootstrap` is the first operator-facing setup action, while this page is mainly a contract reference.
 
 ## `candidate-profile`
 
@@ -142,3 +142,7 @@ If you want to inspect the actual skill contracts described here, use the public
 **Why it matters:** It is the operational entry point for the whole resume workflow.
 
 Continue to [Run and Verify](/docs/resume-agent/run-and-verify) for the operator view of a real run.
+
+<SourceRepoNote>
+  If you want to inspect the actual skill contracts described here, use the public source repository.
+</SourceRepoNote>

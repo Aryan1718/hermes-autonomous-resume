@@ -5,11 +5,9 @@ sidebar_position: 2
 slug: /pipeline/skills
 ---
 
+import SourceRepoNote from '@site/src/components/SourceRepoNote';
+
 # Skill map
-
-If you want to inspect the actual skill contracts listed on this page, use the public source repository:
-
-- [hermes-autonomous-resume on GitHub](https://github.com/Aryan1718/hermes-autonomous-resume)
 
 For step-by-step operational usage, use [Resume Agent > Skill Workflow](/docs/resume-agent/skill-workflow). This page remains the compact map.
 
@@ -32,3 +30,7 @@ For step-by-step operational usage, use [Resume Agent > Skill Workflow](/docs/re
 The skills are intentionally composable. You should be able to understand or improve one stage without rewriting the whole pipeline at once.
 
 Normal usage is: run `resume-pipeline-orchestrator`, not each downstream runtime skill by hand. Individual stages are mainly for debugging or internal iteration.
+
+<SourceRepoNote>
+  If you want to inspect the actual skill contracts listed on this page, use the public source repository.
+</SourceRepoNote>

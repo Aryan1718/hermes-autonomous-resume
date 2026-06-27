@@ -5,13 +5,11 @@ sidebar_position: 2
 slug: /setup/pool-intake
 ---
 
+import SourceRepoNote from '@site/src/components/SourceRepoNote';
+
 # Pool intake
 
 The pool is the evidence base Hermes uses to tailor resumes honestly.
-
-If you want the actual pool-related skill files and file contracts referenced on this page, use the public source repository:
-
-- [hermes-autonomous-resume on GitHub](https://github.com/Aryan1718/hermes-autonomous-resume)
 
 For the full operator walkthrough, use [Resume Agent > Pool Content Guide](/docs/resume-agent/pool-content-guide). This page stays brief on purpose and acts as the shared reference entry point.
 
@@ -54,3 +52,7 @@ Next reading:
 
 - [Resume Agent > Pool Content Guide](/docs/resume-agent/pool-content-guide)
 - [Resume Agent > Skill Workflow](/docs/resume-agent/skill-workflow)
+
+<SourceRepoNote>
+  If you want the actual pool-related skill files and file contracts referenced on this page, use the public source repository.
+</SourceRepoNote>

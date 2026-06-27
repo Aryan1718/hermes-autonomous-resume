@@ -5,13 +5,11 @@ sidebar_position: 2
 slug: /architecture/feedback-loop
 ---
 
+import SourceRepoNote from '@site/src/components/SourceRepoNote';
+
 # Feedback loop
 
 Hermes is not just a one-shot resume generator. The point of the larger system is that outputs feed back into better future runs.
-
-If you want the actual profile, pipeline, and skill assets referenced on this page, use the public source repository:
-
-- [hermes-autonomous-resume on GitHub](https://github.com/Aryan1718/hermes-autonomous-resume)
 
 ## Feedback sources
 
@@ -31,3 +29,7 @@ If you want the actual profile, pipeline, and skill assets referenced on this pa
 ## Important boundary
 
 Feedback should not silently mutate candidate truth in the middle of a run. Broad profile changes should go through explicit setup or refresh steps so the system stays auditable.
+
+<SourceRepoNote>
+  If you want the actual profile, pipeline, and skill assets referenced on this page, use the public source repository.
+</SourceRepoNote>

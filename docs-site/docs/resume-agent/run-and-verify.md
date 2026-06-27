@@ -1,7 +1,7 @@
 ---
 id: run-and-verify
 title: Run and Verify
-sidebar_position: 6
+sidebar_position: 4
 slug: /resume-agent/run-and-verify
 ---
 

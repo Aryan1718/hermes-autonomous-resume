@@ -63,38 +63,6 @@ const config: Config = {
         },
       ],
     },
-    footer: {
-      style: 'dark',
-      links: [
-        {
-          title: 'Docs',
-          items: [
-            {
-              label: 'Getting Started',
-              to: '/docs/getting-started/introduction',
-            },
-            {
-              label: 'Pipeline Overview',
-              to: '/docs/pipeline/overview',
-            },
-          ],
-        },
-        {
-          title: 'Setup',
-          items: [
-            {
-              label: 'Candidate Setup',
-              to: '/docs/setup/candidate-setup',
-            },
-            {
-              label: 'Dashboard Integration',
-              to: '/docs/setup/dashboard-integration',
-            },
-          ],
-        },
-      ],
-      copyright: `Copyright ${new Date().getFullYear()} Hermes`,
-    },
     prism: {
       additionalLanguages: ['bash', 'python', 'json'],
     },

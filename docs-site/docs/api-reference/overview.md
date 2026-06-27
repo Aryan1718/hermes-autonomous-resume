@@ -5,13 +5,11 @@ sidebar_position: 1
 slug: /api-reference
 ---
 
+import SourceRepoNote from '@site/src/components/SourceRepoNote';
+
 # API Overview
 
 The Hermes dashboard API is the handoff point between three different actors:
-
-If you want the actual skills and repository workflows that consume these endpoints, use the public source repository:
-
-- [hermes-autonomous-resume on GitHub](https://github.com/Aryan1718/hermes-autonomous-resume)
 
 - browser clients used by the dashboard frontend
 - Hermes agents that fetch work, save outputs, and review feedback
@@ -86,3 +84,7 @@ This map shows where the currently documented endpoints are used inside the Herm
 - [Feedback APIs](/docs/api-reference/feedback-apis)
 - [Hermes Integration APIs](/docs/api-reference/hermes-integration-apis)
 - [Authentication APIs](/docs/api-reference/authentication-apis)
+
+<SourceRepoNote>
+  If you want the actual skills and repository workflows that consume these endpoints, use the public source repository.
+</SourceRepoNote>

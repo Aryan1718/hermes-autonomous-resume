@@ -5,13 +5,11 @@ sidebar_position: 3
 slug: /getting-started/first-run
 ---
 
+import SourceRepoNote from '@site/src/components/SourceRepoNote';
+
 # First-run checklist
 
 Before running the orchestrator for the first time, make sure the repository is configured for a real candidate rather than left in template mode.
-
-If you want to inspect the actual skill files named on this page, use the public source repository:
-
-- [hermes-autonomous-resume on GitHub](https://github.com/Aryan1718/hermes-autonomous-resume)
 
 ## Required steps
 
@@ -42,3 +40,7 @@ profile-bootstrap
 ## Common failure mode
 
 The most common bad setup is trying to run `resume-pipeline-orchestrator` while `candidate-profile` is still a template. That pushes the whole system into fake assumptions early and weakens every downstream step.
+
+<SourceRepoNote>
+  If you want to inspect the actual skill files named on this page, use the public source repository.
+</SourceRepoNote>
