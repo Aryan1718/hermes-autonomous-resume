@@ -17,10 +17,12 @@ For pool setup, the user workflow is simple:
 
 1. Prepare or upload a file describing one project, one OSS contribution, or one work-experience entry.
 2. Make sure the file has the correct `type:` and required metadata.
-3. Run `pool-intake`.
+3. Run `pool-intake` so the file is placed into the right location and format on the VPS or wherever Hermes is running.
 4. Repeat until the candidate's evidence pool is complete.
 
-The user does not manually place files into `projects/`, `oss/`, or `work-experience/` by hand as part of the normal workflow. `pool-intake` is the skill that makes sure the file lands in the right place and gets the right initialization files.
+The user does not manually place files into `projects/`, `oss/`, or `work-experience/` by hand as part of the normal workflow. `pool-intake` is the skill that makes sure the file lands in the right place on the runtime machine and gets the right initialization files.
+
+This page assumes `profile-bootstrap` has already been run locally and the candidate placeholders have already been replaced. `pool-intake` is the next setup step after that personalization pass.
 
 ## The three required content types
 

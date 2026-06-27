@@ -25,7 +25,7 @@ import SourceRepoNote from '@site/src/components/SourceRepoNote';
   </p>
 
   <p>
-    This resume system uses multiple Hermes skills internally, but the operator workflow is simpler than that. Users set up the candidate with <code>profile-bootstrap</code>, add evidence with <code>pool-intake</code>, and then run <code>resume-pipeline-orchestrator</code> manually or on a cron schedule.
+    This resume system uses multiple Hermes skills internally, but the operator workflow is simpler than that. Users first run <code>profile-bootstrap</code> locally to replace placeholders with their actual candidate and runtime values, then use <code>pool-intake</code> to place experience, project, and OSS markdown files into the right runtime location and format, and then run <code>resume-pipeline-orchestrator</code> manually or on a cron schedule.
   </p>
 
   <p>
@@ -48,7 +48,7 @@ You can run this resume system in two ways, depending on how automated you want 
 
 In both cases, the flow stays the same: the system reads candidate knowledge, takes scraped or provided job descriptions, runs the resume pipeline through the orchestrator, generates tailored resumes, and pushes the results to the dashboard.
 
-The important usability rule is: users do not normally invoke every downstream resume skill one by one. The orchestrator handles that internal sequence.
+The important usability rule is: users do not normally invoke every downstream resume skill one by one. First personalize the repo with `profile-bootstrap`, then let the orchestrator handle the internal sequence.
 
 <div className="flowBlock">
 
@@ -71,8 +71,8 @@ flowchart LR
 
 </div>
 
-- Start with `profile-bootstrap`, not downstream resume skills.
-- Add candidate evidence through `pool-intake`.
+- Start with `profile-bootstrap` locally so the placeholders are replaced before the other skills are added to Hermes.
+- Add candidate evidence through `pool-intake`, which places the user's markdown files into the right runtime location and format.
 - Use `resume-pipeline-orchestrator` as the normal runtime entry point.
 
 ## Skills

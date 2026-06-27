@@ -15,6 +15,8 @@ If you are following the main resume workflow, treat [Resume Agent > Setup Guide
 
 This skill exists to prevent users from hand-editing scattered placeholders across the repository. It asks for the minimum inputs the pipeline needs, then writes the candidate-dependent source of truth in one pass.
 
+In practice, this is the first step you run locally before adding the rest of the resume skills to Hermes. Most of the other skills are still reusable templates until this personalization step is complete.
+
 ## What profile-bootstrap should collect
 
 - candidate identity and current search scope

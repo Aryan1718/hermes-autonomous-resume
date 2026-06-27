@@ -15,11 +15,20 @@ The Resume Agent section is the main operator handbook for this repository. Read
 
 Most users only need to understand three actions:
 
-1. Run `profile-bootstrap` once to set up the candidate and runtime placeholders.
-2. Add or upload candidate evidence files and let `pool-intake` place them into the pool correctly.
+1. Run `profile-bootstrap` locally first to replace the repository placeholders with your actual candidate and runtime values.
+2. Only after that, add the remaining resume skills to Hermes and use `pool-intake` when the user wants to add experience, project, or OSS markdown files so Hermes places them in the right location and format on the VPS or wherever Hermes is running.
 3. Run `resume-pipeline-orchestrator` to process JDs.
 
 After setup, users should not need to invoke `jd-prefilter`, `jd-extraction`, `project-selection`, `point-repointing`, or `latex-assembly` manually during normal operation. Those are orchestrator-managed stages.
+
+## Why this flow exists
+
+Most resume skills in this repo start as reusable templates with placeholders. That is intentional.
+
+- `profile-bootstrap` is the skill that personalizes those templates for one real candidate.
+- Until `profile-bootstrap` has been run and the placeholders are replaced, the rest of the skills are not candidate-ready.
+- That is why the first real setup step is local personalization, not adding every skill to Hermes immediately.
+- After the placeholders are replaced and `candidate-profile` is real, the rest of the skills can be added and used normally.
 
 ## What the resume agent owns
 
@@ -35,7 +44,7 @@ After setup, users should not need to invoke `jd-prefilter`, `jd-extraction`, `p
 Confirm all of these before trying to process job descriptions:
 
 - A dedicated Hermes resume profile exists for this workflow.
-- Runtime placeholders are resolved where needed: `<PROFILE_SLUG>`, `<POOL_DIR>`, `<RESUMES_DIR>`, `<DASHBOARD_BASE_URL>`, `<DASHBOARD_API_KEY_ENV>`.
+- Runtime placeholders are resolved where needed by `profile-bootstrap`: `<PROFILE_SLUG>`, `<POOL_DIR>`, `<RESUMES_DIR>`, `<DASHBOARD_BASE_URL>`, `<DASHBOARD_API_KEY_ENV>`.
 - `candidate-profile/SKILL.md` has real candidate facts, not template placeholders.
 - Dashboard API auth is configured and the endpoint contracts in [API Reference](/docs/api-reference) are available.
 - Evidence files exist for the candidate's work experience, personal projects, and OSS contributions.
@@ -45,8 +54,8 @@ Confirm all of these before trying to process job descriptions:
 This system is not a monolithic prompt. It is a sequence of skills plus one orchestrator:
 
 1. `profile-bootstrap` helps fill candidate and runtime setup.
-2. `candidate-profile` becomes the candidate-specific source of truth.
-3. `pool-intake` and `pool-versioning` establish the evidence pool.
+2. `candidate-profile` becomes the candidate-specific source of truth after placeholders are replaced with real values.
+3. `pool-intake` and `pool-versioning` make sure candidate markdown files are stored in the right runtime locations and initialized in the way the pipeline expects.
 4. JD-facing skills process, select, and tailor content.
 5. `resume-pipeline-orchestrator` coordinates the run and handles dashboard side effects.
 

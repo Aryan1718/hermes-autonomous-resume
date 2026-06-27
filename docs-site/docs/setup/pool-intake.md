@@ -30,6 +30,8 @@ Use:
 - `pool-intake` to add new items
 - `pool-versioning` to understand the structure and write boundaries
 
+Run this after `profile-bootstrap` has already been used to replace candidate placeholders locally. At that point, `pool-intake` becomes the normal way to take the user's experience, project, or OSS markdown files and place them into the right location and format on the VPS or wherever Hermes is running.
+
 The standard intake result is:
 
 - `raw.md` copied or transformed into the pool item folder

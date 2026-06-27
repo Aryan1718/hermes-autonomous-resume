@@ -15,9 +15,9 @@ Use this page for first-time setup before any JD processing. The goal is to leav
 
 If you only want the shortest correct path:
 
-1. Run `profile-bootstrap`.
-2. Make sure `candidate-profile/SKILL.md` now contains the real candidate.
-3. Confirm the runtime placeholders are correct.
+1. Run `profile-bootstrap` locally.
+2. Make sure repository placeholders and `candidate-profile/SKILL.md` now contain your real candidate and runtime values.
+3. Only then add the rest of the resume skills to Hermes.
 4. Set up dashboard auth.
 5. Start adding evidence files through `pool-intake`.
 
@@ -40,7 +40,7 @@ These resolve to the documented runtime roots:
 - Pool root: `/opt/data/profiles/<PROFILE_SLUG>/workspace/<POOL_DIR>/`
 - Resume output root: `/opt/data/profiles/<PROFILE_SLUG>/home/<RESUMES_DIR>/`
 
-If you want the repo personalized in one pass, start with `profile-bootstrap`. This is the correct first action for a new candidate. Supporting detail: [Setup > Candidate Setup](/docs/setup/candidate-setup).
+If you want the repo personalized in one pass, start with `profile-bootstrap`. This is the correct first action for a new candidate because the rest of the skills are still template-shaped until this step is done. Supporting detail: [Setup > Candidate Setup](/docs/setup/candidate-setup).
 
 ## Step 2: Fill `candidate-profile`
 
@@ -51,10 +51,11 @@ This must happen before JD processing.
 Recommended path:
 
 1. Run `profile-bootstrap`.
-2. Rewrite `candidate-profile/SKILL.md` with the current candidate's real facts.
-3. Re-scan the file for unresolved placeholders and stale candidate content.
+2. Let it replace the candidate and runtime placeholders across the setup files it owns.
+3. Confirm `candidate-profile/SKILL.md` now reflects the current candidate's real facts.
+4. Re-scan the file for unresolved placeholders and stale candidate content.
 
-This is the main setup action the user performs directly. Everything else in the resume pipeline depends on this file being right.
+This is the main setup action the user performs directly. Until this is complete, the rest of the resume skills should be treated as placeholders or templates rather than ready-to-run candidate skills.
 
 ## Step 3: Connect dashboard auth and API requirements
 
@@ -93,9 +94,18 @@ At this point, "ready to run" means:
 
 Important: being "ready to run" does not mean "run individual resume skills by hand." It means the repository is ready for evidence intake and then for `resume-pipeline-orchestrator`.
 
+## Step 5: Use `pool-intake` to place evidence where the pipeline expects it
+
+After `profile-bootstrap` is complete and the candidate values are real, start onboarding evidence with `pool-intake`.
+
+`pool-intake` is not just a generic upload step. Its job is to take each user-provided experience, project, or OSS markdown file and place it into the right location and format on the VPS or wherever Hermes is running so the pipeline can use it later.
+
+That means the user should provide source files, then let `pool-intake` create or update the correct item folder instead of manually arranging files by hand.
+
 ## Readiness checklist
 
 - `candidate-profile` contains real candidate facts and no required placeholders.
+- The repository has been personalized by running `profile-bootstrap` locally before adding the rest of the skills to Hermes.
 - Pool root and resume output root are defined using the documented placeholders.
 - Dashboard API configuration is in place and matches the [API Reference](/docs/api-reference).
 - At least one work-experience entry exists in the pool.

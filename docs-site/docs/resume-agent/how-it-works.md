@@ -15,17 +15,18 @@ For live runs, treat `resume-pipeline-orchestrator` as the operational source of
 
 ## End-to-end flow
 
-1. Run `profile-bootstrap` for a new candidate to establish the candidate profile and runtime placeholders.
-2. Confirm `candidate-profile/SKILL.md` is filled with the current candidate's real facts.
-3. Add evidence into the pool with `pool-intake`.
-4. Fetch unprocessed JDs through `resume-pipeline-orchestrator`.
-5. Run `jd-prefilter` to skip obvious non-fits quickly.
-6. Run `jd-extraction` on passing JDs.
-7. Run `project-selection` against `masters.md` to choose 3 supporting projects or OSS items.
-8. Run `point-repointing` to tailor selected projects plus all work experience.
-9. Run `latex-assembly` to produce the final `.tex`.
-10. Run the orchestrator self-review gate.
-11. Push the resume, mark the JD processed, and log the run.
+1. Run `profile-bootstrap` locally for a new candidate to replace the repository placeholders with real candidate and runtime values.
+2. Confirm `candidate-profile/SKILL.md` is filled with the current candidate's real facts, not template content.
+3. Only after that, add the remaining resume skills to Hermes.
+4. Add evidence into the pool with `pool-intake`, which takes the user's markdown files and places them into the right runtime location and format.
+5. Fetch unprocessed JDs through `resume-pipeline-orchestrator`.
+6. Run `jd-prefilter` to skip obvious non-fits quickly.
+7. Run `jd-extraction` on passing JDs.
+8. Run `project-selection` against `masters.md` to choose 3 supporting projects or OSS items.
+9. Run `point-repointing` to tailor selected projects plus all work experience.
+10. Run `latex-assembly` to produce the final `.tex`.
+11. Run the orchestrator self-review gate.
+12. Push the resume, mark the JD processed, and log the run.
 
 ## Write boundaries
 
@@ -55,8 +56,8 @@ flowchart LR
 ```
 
 - `profile-bootstrap` is the first setup action.
-- `candidate-profile` must be real before JD processing.
-- `pool-intake` prepares evidence for downstream tailoring.
+- `candidate-profile` must be real before the other skills are treated as usable.
+- `pool-intake` prepares evidence by placing user files in the right runtime location and creating the initialization files the pipeline needs.
 
 ## Internal orchestration
 
