@@ -1,26 +1,29 @@
 # Hermes Autonomous Resume
 
-Hermes Autonomous Resume is a Hermes-based resume agent that helps you apply to jobs with resumes customized to each job description.
+Hermes Autonomous Resume is a Hermes-based job application system with two cooperating agents: a scraper agent that collects jobs and a resume agent that generates resumes customized to each job description.
 
-The system is designed to run continuously: collect jobs on a schedule, generate tailored resumes from grounded candidate evidence, push them into a dashboard review flow, and improve future runs through explicit human feedback.
+The system is designed to run continuously. The scraper agent can run on a schedule to collect jobs and store them in the database, where they appear in the dashboard. The resume agent can run on its own schedule to process all scraped job descriptions through the full resume pipeline, then store the generated LaTeX and PDF outputs in the database so they can also be reviewed in the dashboard.
 
 At a high level, the product combines:
 
-- a scraper flow that acquires job descriptions
-- a resume flow that reads candidate truth and evidence, builds JD-specific resumes, and pushes them for review
+- a scraper agent that acquires job descriptions and stores them for review
+- a resume agent that reads candidate truth and evidence, runs the full pipeline, and stores generated resumes
 
 ## System View
 
 ```mermaid
 flowchart LR
-  A[Scraper collects jobs] --> B[Dashboard queue]
-  B --> C[Resume agent processes JD]
-  D[Candidate profile] --> C
-  E[Evidence pool] --> C
-  C --> F[Customized resume]
-  F --> G[Human review]
-  G --> D
-  G --> E
+  A[Scraper agent<br/>scheduled or manual] --> B[Scrape job descriptions]
+  B --> C[Store JDs in database]
+  C --> D[Dashboard shows scraped jobs]
+
+  C --> E[Resume agent<br/>scheduled or manual]
+  F[Candidate profile] --> E
+  G[Evidence pool] --> E
+  E --> H[Run full resume pipeline]
+  H --> I[Generate LaTeX and PDF resumes]
+  I --> J[Store resumes in database]
+  J --> K[Dashboard shows resume outputs]
 ```
 
 ## What This Repo Contains
@@ -54,5 +57,6 @@ Recommended doc entry points:
 
 - `Getting Started` for installation and first-run context
 - `Resume Agent` for the operator workflow
+- `Scraper Agent` for the job collection workflow
 - `Architecture` for system boundaries and lifecycle
 - `API Reference` if you are building your own dashboard/backend
