@@ -1,6 +1,25 @@
-# Hermes Autonomous Resume
+<h1 align="center">Hermes Autonomous Resume</h1>
 
-Hermes Autonomous Resume is a Hermes-based job application system with two cooperating agents: a scraper agent that collects jobs and a resume agent that generates resumes customized to each job description.
+<p align="center">
+  A Hermes-based job application system with a scraper agent and a resume agent that generates resumes customized to each job description.
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/framework-Hermes-0f766e?style=for-the-badge" alt="Hermes">
+  <img src="https://img.shields.io/badge/models-OpenRouter-e11d48?style=for-the-badge" alt="OpenRouter">
+  <img src="https://img.shields.io/badge/deploy-Hostinger%20VPS-2563eb?style=for-the-badge" alt="Hostinger VPS">
+  <img src="https://img.shields.io/badge/interface-Custom%20Dashboard-475569?style=for-the-badge" alt="Custom Dashboard">
+  <img src="https://img.shields.io/badge/output-LaTeX%20%26%20PDF-7c3aed?style=for-the-badge" alt="LaTeX and PDF">
+  <img src="https://img.shields.io/badge/docs-Docusaurus-16a34a?style=for-the-badge" alt="Docusaurus">
+  <img src="https://img.shields.io/badge/docs%20hosted-Vercel-111827?style=for-the-badge" alt="Vercel">
+</p>
+
+<p align="center">
+  <a href="https://hermes-autonomous-resume.vercel.app/docs/getting-started/introduction">Docs</a> •
+  <a href="https://hermes-autonomous-resume.vercel.app/docs/resume-agent/overview">Resume Agent</a> •
+  <a href="https://hermes-autonomous-resume.vercel.app/docs/scraper-agent/overview">Scraper Agent</a> •
+  <a href="https://hermes-autonomous-resume.vercel.app/docs/architecture/system-design">Architecture</a>
+</p>
 
 The system is designed to run continuously. The scraper agent can run on a schedule to collect jobs and store them in the database, where they appear in the dashboard. The resume agent can run on its own schedule to process all scraped job descriptions through the full resume pipeline, then store the generated LaTeX and PDF outputs in the database so they can also be reviewed in the dashboard.
 
@@ -8,6 +27,21 @@ At a high level, the product combines:
 
 - a scraper agent that acquires job descriptions and stores them for review
 - a resume agent that reads candidate truth and evidence, runs the full pipeline, and stores generated resumes
+
+## Read The Docs
+
+If you want to run this system yourself or build your own version, start here:
+
+- Docs: https://hermes-autonomous-resume.vercel.app/docs/getting-started/introduction
+- Docs source: [docs-site/docs/getting-started/introduction.md](docs-site/docs/getting-started/introduction.md)
+
+Recommended doc entry points:
+
+- `Getting Started` for installation and first-run context
+- `Resume Agent` for the operator workflow
+- `Scraper Agent` for the job collection workflow
+- `Architecture` for system boundaries and lifecycle
+- `API Reference` if you are building your own dashboard/backend
 
 ## System View
 
@@ -45,18 +79,3 @@ flowchart LR
 | `point-repointing` | Tailors experience and project bullets to the target job description. |
 | `latex-assembly` | Assembles the final resume output in LaTeX form. |
 | `resume-pipeline-orchestrator` | Runs the end-to-end resume flow and pushes results to the dashboard. |
-
-## Read The Docs
-
-If you want to run this system yourself or build your own version, start here:
-
-- Docs: https://hermes-autonomous-resume.vercel.app/docs/getting-started/introduction
-- Docs source: [docs-site/docs/getting-started/introduction.md](docs-site/docs/getting-started/introduction.md)
-
-Recommended doc entry points:
-
-- `Getting Started` for installation and first-run context
-- `Resume Agent` for the operator workflow
-- `Scraper Agent` for the job collection workflow
-- `Architecture` for system boundaries and lifecycle
-- `API Reference` if you are building your own dashboard/backend
