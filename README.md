@@ -9,35 +9,18 @@ At a high level, the product combines:
 - a scraper flow that acquires job descriptions
 - a resume flow that reads candidate truth and evidence, builds JD-specific resumes, and pushes them for review
 
-This repository is intentionally not fully explained in the README. The detailed setup, operator workflow, architecture, pipeline stages, and API contracts live in the docs site.
-
 ## System View
 
 ```mermaid
 flowchart LR
-  classDef actor fill:#ecfeff,stroke:#0891b2,color:#164e63,stroke-width:1px;
-  classDef system fill:#f8fafc,stroke:#94a3b8,color:#0f172a,stroke-width:1px;
-  classDef data fill:#fff7ed,stroke:#ea580c,color:#9a3412,stroke-width:1px;
-  classDef output fill:#dcfce7,stroke:#16a34a,color:#14532d,stroke-width:1px;
-
-  A[Scraper profile]:::actor
-  B[Dashboard / backend]:::system
-  C[Resume profile]:::actor
-  D[candidate-profile]:::data
-  E[Evidence pool]:::data
-  F[Generated resume outputs]:::output
-  G[Human review / feedback]:::system
-
-  A -->|ingest job descriptions| B
-  B -->|queue next JD| C
-  D -->|candidate truth constraints| C
-  E -->|reusable evidence| C
-  C -->|write resume artifacts| F
-  C -->|push outputs and logs| B
-  B -->|review surface| G
-  F -->|resume package| G
-  G -->|future improvements| D
-  G -->|future improvements| E
+  A[Scraper collects jobs] --> B[Dashboard queue]
+  B --> C[Resume agent processes JD]
+  D[Candidate profile] --> C
+  E[Evidence pool] --> C
+  C --> F[Customized resume]
+  F --> G[Human review]
+  G --> D
+  G --> E
 ```
 
 ## What This Repo Contains
@@ -45,6 +28,20 @@ flowchart LR
 - the Hermes skills that power candidate setup, evidence intake, JD processing, resume generation, and orchestration
 - scraper utilities for collecting jobs
 - the docs site for running the system or building your own version
+
+## Core Skills
+
+| Skill | Description |
+|---|---|
+| `profile-bootstrap` | Personalizes the repo for a real candidate and fills runtime placeholders. |
+| `candidate-profile` | Stores the candidate truth the rest of the resume system reads from. |
+| `pool-intake` | Adds work, project, and OSS evidence into the expected pool structure. |
+| `jd-prefilter` | Quickly rejects weak-fit job descriptions before deeper processing. |
+| `jd-extraction` | Turns a job description into structured signals for downstream resume work. |
+| `project-selection` | Chooses the strongest supporting project and OSS evidence for a JD. |
+| `point-repointing` | Tailors experience and project bullets to the target job description. |
+| `latex-assembly` | Assembles the final resume output in LaTeX form. |
+| `resume-pipeline-orchestrator` | Runs the end-to-end resume flow and pushes results to the dashboard. |
 
 ## Read The Docs
 
@@ -59,5 +56,3 @@ Recommended doc entry points:
 - `Resume Agent` for the operator workflow
 - `Architecture` for system boundaries and lifecycle
 - `API Reference` if you are building your own dashboard/backend
-
-The README stays intentionally minimal. The docs are the canonical place for setup and implementation details.
