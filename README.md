@@ -60,6 +60,30 @@ flowchart LR
   J --> K[Dashboard shows resume outputs]
 ```
 
+## Screenshots
+
+Add proof screenshots for the live system here. Good examples:
+
+- dashboard view showing scraped job descriptions
+- dashboard view showing generated resume outputs
+- scraper agent run output
+- resume agent run output
+- generated resume preview in LaTeX or PDF form
+
+Recommended location in this repo:
+
+- `assets/readme/`
+
+Suggested file names:
+
+- `assets/readme/dashboard-scraped-jobs.png`
+- `assets/readme/dashboard-generated-resumes.png`
+- `assets/readme/scraper-run.png`
+- `assets/readme/resume-agent-run.png`
+- `assets/readme/generated-resume-preview.png`
+
+After you add them, reference them in this section with Markdown image links.
+
 ## What This Repo Contains
 
 - the Hermes skills that power candidate setup, evidence intake, JD processing, resume generation, and orchestration
