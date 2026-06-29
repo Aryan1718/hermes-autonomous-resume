@@ -62,25 +62,13 @@ flowchart LR
 
 ## Screenshots
 
-### Scraper Agent Run
+### System Operations
 
-![Scraper agent scheduled run](assets/readme/scraper-agent-run.png)
+![System operations collage](assets/readme/system-operations-collage.png)
 
-### Resume Agent Run
+### Dashboard Outputs
 
-![Resume agent scheduled run](assets/readme/resume-agent-run.png)
-
-### Dashboard Jobs Queue
-
-![Dashboard jobs queue](assets/readme/dashboard-jobs-queue.png)
-
-### Job Detail And Generated Resume Output
-
-![Dashboard job detail with generated resume state](assets/readme/dashboard-job-detail.png)
-
-### Resume PDF Preview
-
-![Generated resume PDF preview](assets/readme/resume-pdf-preview.png)
+![Dashboard outputs collage](assets/readme/dashboard-outputs-collage.png)
 
 ## What This Repo Contains
 
