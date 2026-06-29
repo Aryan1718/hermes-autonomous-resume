@@ -57,7 +57,7 @@ const config: Config = {
           position: 'left',
         },
         {
-          href: 'https://github.com/your-org/hermes-autonomous-resume',
+          href: 'https://github.com/Aryan1718/hermes-autonomous-resume',
           label: 'GitHub',
           position: 'right',
         },
