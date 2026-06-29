@@ -15,9 +15,9 @@
 </p>
 
 <p align="center">
-  <a href="https://hermes-autonomous-resume.vercel.app/docs/getting-started/introduction">Docs</a> •
-  <a href="https://hermes-autonomous-resume.vercel.app/docs/resume-agent/overview">Resume Agent</a> •
-  <a href="https://hermes-autonomous-resume.vercel.app/docs/scraper-agent/overview">Scraper Agent</a> •
+  <a href="https://hermes-autonomous-resume.vercel.app/docs/getting-started/introduction">Docs</a> &bull;
+  <a href="https://hermes-autonomous-resume.vercel.app/docs/resume-agent/overview">Resume Agent</a> &bull;
+  <a href="https://hermes-autonomous-resume.vercel.app/docs/scraper-agent/overview">Scraper Agent</a> &bull;
   <a href="https://hermes-autonomous-resume.vercel.app/docs/architecture/system-design">Architecture</a>
 </p>
 
@@ -62,27 +62,25 @@ flowchart LR
 
 ## Screenshots
 
-Add proof screenshots for the live system here. Good examples:
+### Scraper Agent Run
 
-- dashboard view showing scraped job descriptions
-- dashboard view showing generated resume outputs
-- scraper agent run output
-- resume agent run output
-- generated resume preview in LaTeX or PDF form
+![Scraper agent scheduled run](assets/readme/scraper-agent-run.png)
 
-Recommended location in this repo:
+### Resume Agent Run
 
-- `assets/readme/`
+![Resume agent scheduled run](assets/readme/resume-agent-run.png)
 
-Suggested file names:
+### Dashboard Jobs Queue
 
-- `assets/readme/dashboard-scraped-jobs.png`
-- `assets/readme/dashboard-generated-resumes.png`
-- `assets/readme/scraper-run.png`
-- `assets/readme/resume-agent-run.png`
-- `assets/readme/generated-resume-preview.png`
+![Dashboard jobs queue](assets/readme/dashboard-jobs-queue.png)
 
-After you add them, reference them in this section with Markdown image links.
+### Job Detail And Generated Resume Output
+
+![Dashboard job detail with generated resume state](assets/readme/dashboard-job-detail.png)
+
+### Resume PDF Preview
+
+![Generated resume PDF preview](assets/readme/resume-pdf-preview.png)
 
 ## What This Repo Contains
 
