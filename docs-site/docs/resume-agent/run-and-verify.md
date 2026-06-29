@@ -96,6 +96,14 @@ After a successful run, expect to see:
 - the JD marked processed via [Job Description APIs](/docs/api-reference/job-description-apis)
 - workflow logs recorded via [Workflow Logging APIs](/docs/api-reference/workflow-logging-apis)
 
+## PDF conversion
+
+If you need to convert a generated LaTeX resume into PDF outside the normal dashboard experience, use the external LaTeX Resume Engine:
+
+- https://latex-resume-engine.onrender.com/docs
+
+Use it when you have the generated `.tex` output and want a PDF without building that conversion step into your own dashboard first.
+
 ## Verification checklist
 
 - The saved `.tex` starts with `\documentclass{article}` on line 1.

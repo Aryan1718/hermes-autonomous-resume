@@ -25,6 +25,10 @@ import SourceRepoNote from '@site/src/components/SourceRepoNote';
   </p>
 
   <p>
+    If your dashboard or workflow needs a separate LaTeX-to-PDF conversion step, use the external LaTeX Resume Engine docs at <a href="https://latex-resume-engine.onrender.com/docs" target="_blank" rel="noreferrer">latex-resume-engine.onrender.com/docs</a>. That service takes generated LaTeX resume content and returns a PDF.
+  </p>
+
+  <p>
     This resume system uses multiple Hermes skills internally, but the operator workflow is simpler than that. Users first run <code>profile-bootstrap</code> locally to replace placeholders with their actual candidate and runtime values, then use <code>pool-intake</code> to place experience, project, and OSS markdown files into the right runtime location and format, and then run <code>resume-pipeline-orchestrator</code> manually or on a cron schedule.
   </p>
 

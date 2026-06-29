@@ -43,6 +43,14 @@ Recommended doc entry points:
 - `Architecture` for system boundaries and lifecycle
 - `API Reference` if you are building your own dashboard/backend
 
+## PDF Conversion
+
+If you want to convert a generated LaTeX resume into PDF outside the dashboard flow, use:
+
+- https://latex-resume-engine.onrender.com/docs
+
+That service takes the generated LaTeX resume and returns a PDF.
+
 ## System View
 
 ```mermaid
